@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://d34armexgp1kf"]
 
-[ext_resource type="Texture2D" path="res://assets/images/crosshair.png" id="1_nbnma"]
+[ext_resource type="Texture2D" uid="uid://u5ntth5kfibm" path="res://assets/images/crosshair.png" id="1_nbnma"]
 [ext_resource type="Script" path="res://ui/first_person_ui/first_person_ui.gd" id="1_qefni"]
 
-[node name="UI" type="Control"]
+[node name="FirstPersonUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_qefni")
