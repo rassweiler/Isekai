@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqfufhh3qbegf"]
+[gd_scene load_steps=9 format=3 uid="uid://dqfufhh3qbegf"]
+
+[ext_resource type="Material" uid="uid://ceb3lgm4sdvov" path="res://levels/test_bed/test_bed_material.tres" id="1_0241c"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8ub0x"]
 size = Vector2(30, 30)
@@ -30,6 +32,7 @@ glow_enabled = true
 [node name="Base" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+material_override = ExtResource("1_0241c")
 mesh = SubResource("PlaneMesh_8ub0x")
 skeleton = NodePath("../..")
 
@@ -42,6 +45,7 @@ shape = SubResource("ConcavePolygonShape3D_723j8")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -15)
+material_override = ExtResource("1_0241c")
 mesh = SubResource("BoxMesh_53c8c")
 skeleton = NodePath("../..")
 
@@ -54,6 +58,7 @@ shape = SubResource("ConcavePolygonShape3D_5d458")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Base"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 15)
+material_override = ExtResource("1_0241c")
 mesh = SubResource("BoxMesh_53c8c")
 skeleton = NodePath("../..")
 
@@ -66,6 +71,7 @@ shape = SubResource("ConcavePolygonShape3D_5d458")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Base"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 2.5, 0)
+material_override = ExtResource("1_0241c")
 mesh = SubResource("BoxMesh_53c8c")
 skeleton = NodePath("../..")
 
@@ -78,6 +84,7 @@ shape = SubResource("ConcavePolygonShape3D_5d458")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Base"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 2.5, 0)
+material_override = ExtResource("1_0241c")
 mesh = SubResource("BoxMesh_53c8c")
 skeleton = NodePath("../..")
 
