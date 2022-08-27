@@ -6,7 +6,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_to0ij"]
 resource_local_to_scene = true
-friction = 0.0
 rough = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k2gcp"]

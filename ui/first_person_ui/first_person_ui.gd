@@ -1,6 +1,8 @@
 extends Control
 
-@onready var hint := $Hint
+@onready var target_name := $TargetName
+@onready var pick_hint := $PickHint
+@onready var interact_hint := $InteractHint
 
 var mouse_captured: bool = false
 
@@ -22,9 +24,15 @@ func _ready():
 func _process(delta):
 	pass
 
-func show_hint(text):
-	hint.text = text
-	hint.visible = true
+func show_hints(target, pick, interact):
+	#target_name.text = target
+	#target_name.visible = true
+	pick_hint.text = pick
+	pick_hint.visible = true
+	interact_hint.text = interact
+	interact_hint.visible = true
 	
-func hide_hint():
-	hint.visible = false
+func hide_hints():
+	#target_name.visible = false
+	pick_hint.visible = false
+	interact_hint.visible = false

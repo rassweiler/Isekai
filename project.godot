@@ -89,6 +89,8 @@ interact={
 
 [physics]
 
+3d/physics_engine="GodotPhysics3D"
+3d/solver/solver_iterations=18
 common/enable_pause_aware_picking=true
 
 [rendering]

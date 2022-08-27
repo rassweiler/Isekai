@@ -33,9 +33,14 @@ func _process(delta):
 	if ray_object != ray_object_old:
 		ray_object_old = ray_object
 		if ray_object:
-			ui.show_hint(ray_object.get_object_name())
+			var pick_hint: String
+			if ray_object.is_in_group("Pickable") and ray_object.mass <= max_pick_weight: 
+				pick_hint = "F: " + ray_object.get_pickup_hint()
+			else: 
+				pick_hint = "Unable to pickup " + ray_object.get_object_name() 
+			ui.show_hints(ray_object.get_object_name(), pick_hint,ray_object.get_interact_hint())
 		else:
-			ui.hide_hint()
+			ui.hide_hints()
 
 func _input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -77,7 +82,7 @@ func _physics_process(delta):
 	
 	if feet.is_colliding():
 		is_on_floor = true
-		physics_material_override.friction = 0.1
+		#physics_material_override.friction = 0.1
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor:
 		is_on_floor = false

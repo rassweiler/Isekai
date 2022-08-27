@@ -1,6 +1,8 @@
 extends AnimatableBody3D
 
 @onready var lid = $Lid
+@onready var pickup_hint: String = "Pickup " + object_name
+@onready var interact_hint: String = "E: Intreract"
 
 @export var object_name: String = "ObjectBase"
 
@@ -41,3 +43,9 @@ func close():
 
 func get_object_name():
 	return object_name
+
+func get_pickup_hint():
+	return pickup_hint
+	
+func get_interact_hint():
+	return interact_hint
