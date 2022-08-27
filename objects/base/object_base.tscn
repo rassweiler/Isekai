@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://objects/base/object_base.gd" id="1_1q8j2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yd6ju"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuo75"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="ObjectBase" type="RigidDynamicBody3D" groups=["Object"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_1q8j2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yd6ju")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uuo75")
+
+[node name="Name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+ignore_occlusion_culling = true
+billboard = 2
+double_sided = false
+text = "ObjectBase"
+font_size = 30

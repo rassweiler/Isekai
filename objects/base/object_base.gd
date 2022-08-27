@@ -1,8 +1,12 @@
 extends RigidDynamicBody3D
 
+@export var object_name: String = "ObjectBase"
+
+@onready var name_display: Object = $Name
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	name_display.text = object_name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
