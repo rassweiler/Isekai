@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://pqoog0xhbug1"]
+
+[ext_resource type="Script" path="res://Objects/Bottle/Bottle.gd" id="1_ow2tk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k0lfv"]
+friction = 0.45
+rough = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kvm73"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.25
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r6e5d"]
+points = PackedVector3Array(0.0466849, 0.115916, 0.0177059, -0.0476504, -0.116339, -0.01493, -0.0478752, -0.116893, 0.0142055, 0.0475737, -0.118105, -0.0151505, -0.01493, 0.116339, -0.0476504, -0.0434404, 0.114807, 0.0247081, 0.0177059, -0.115916, 0.0466849, 0.0142055, -0.116893, -0.0478752, 0.0428852, 0.115443, -0.0256408, -0.0151505, 0.118105, 0.0475737, -0.0476504, 0.116339, -0.01493, -0.0256408, -0.115443, 0.0428852, -0.0294616, -0.116296, -0.0403644, 0.0432359, -0.116379, 0.0250517, 0.0250517, 0.116379, 0.0432359, 0.0142055, 0.116893, -0.0478752, -0.0403644, 0.116296, -0.0294616, 0.0247081, -0.114807, -0.0434404, -0.0151505, -0.118105, 0.0475737, 0.0475737, 0.118105, -0.0151505, -0.01493, -0.116339, -0.0476504, -0.0478752, 0.116893, 0.0142055, 0.0354, 0.114579, 0.0354, 0.0354, -0.114579, 0.0354, 0.0177059, 0.115916, 0.0466849, 0.0466849, -0.115916, 0.0177059, -0.0256408, 0.115443, 0.0428852, 0.0428852, -0.115443, -0.0256408, -0.0434404, -0.114807, 0.0247081, 0.0247081, 0.114807, -0.0434404, -0.0403644, -0.116296, -0.0294616, -0.0294616, 0.116296, -0.0403644)
+
+[node name="Bottle" type="RigidDynamicBody3D"]
+collision_layer = 4
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_k0lfv")
+script = ExtResource("1_ow2tk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("CylinderMesh_kvm73")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("ConvexPolygonShape3D_r6e5d")
