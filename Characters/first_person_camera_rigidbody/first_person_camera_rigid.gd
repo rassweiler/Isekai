@@ -61,8 +61,8 @@ func _physics_process(delta):
 	
 	if feet.is_colliding():
 		is_on_floor = true
-		deceleration = 1.0
-		physics_material_override.friction = 1
+		deceleration = 0.5
+		physics_material_override.friction = 0.1
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor:
 		deceleration = 0.1
