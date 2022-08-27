@@ -1,9 +1,9 @@
 extends RigidDynamicBody3D
 
-@export var acceleration = 1.2
-@export var jump_velocity = 110.0
-@export var speed = 900.0
-@export var max_speed = 900.0
+@export var acceleration = 1.0
+@export var jump_velocity = 8
+@export var speed = 920.0
+@export var max_speed = 1000.0
 @export var view_sensitivity = 10.0
 @export var max_pick_weight = 50.0
 @export var pick_strength = 0.1
@@ -17,6 +17,7 @@ var is_on_floor = false
 var move_input = Vector2()
 var held_object: Object = null
 var ray_object: Object = null
+var ray_object_old: Object = null
 
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
@@ -24,16 +25,24 @@ var ray_object: Object = null
 @onready var body := $CollisionShape
 @onready var pick_ray := $Neck/Camera3D/PickRay
 @onready var hold_position := $Neck/Camera3D/HoldPosition
+@onready var model := $PlayerCharacter
+@onready var ui := $FirstPersonUI
 
 func _process(delta):
 	ray_object = pick_ray.get_collider()
+	if ray_object != ray_object_old:
+		ray_object_old = ray_object
+		if ray_object:
+			ui.show_hint(ray_object.get_object_name())
+		else:
+			ui.hide_hint()
 
 func _input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
-			camera.rotation.x = clamp(camera.rotation.x, deg2rad(-50), deg2rad(80))
+			camera.rotation.x = clamp(camera.rotation.x, deg2rad(-70), deg2rad(80))
 			mouse_input = event.relative
 	if Input.is_action_just_pressed("grab_object"):
 		if held_object:

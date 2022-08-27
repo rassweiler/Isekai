@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://tufwm33rged8"]
+[gd_scene load_steps=6 format=3 uid="uid://tufwm33rged8"]
 
 [ext_resource type="PackedScene" uid="uid://dqfufhh3qbegf" path="res://levels/test_bed/test_bed.tscn" id="1_wiyc4"]
-[ext_resource type="PackedScene" uid="uid://b1847fpsivnos" path="res://characters/biped/player/player_character.tscn" id="2_hidcv"]
+[ext_resource type="PackedScene" uid="uid://64h3j42gyjt0" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="2_cr0jd"]
 [ext_resource type="PackedScene" uid="uid://rvy43ajxfdyt" path="res://objects/base/object_base.tscn" id="3_t023y"]
 [ext_resource type="PackedScene" uid="uid://g55xpxnvuoyp" path="res://objects/static/storage_base/storage_base.tscn" id="4_xh1ep"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bm647"]
+resource_local_to_scene = true
+friction = 0.0
+rough = true
 
 [node name="Main" type="Node"]
 
@@ -13,21 +18,26 @@
 
 [node name="Characters" type="Node3D" parent="."]
 
-[node name="PlayerCharacter" parent="Characters" instance=ExtResource("2_hidcv")]
+[node name="FirstPersonControllerRigidbody" parent="Characters" instance=ExtResource("2_cr0jd")]
+physics_material_override = SubResource("PhysicsMaterial_bm647")
 
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="ObjectBase" parent="Objects" instance=ExtResource("3_t023y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9735, -4.52233)
 mass = 30.0
+object_name = "Cube 01"
 
 [node name="ObjectBase2" parent="Objects" instance=ExtResource("3_t023y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145819, 1.52827, -4.54061)
 mass = 40.0
+object_name = "Cubert"
 
 [node name="ObjectBase3" parent="Objects" instance=ExtResource("3_t023y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401512, -4.67031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.470149, -4.67031)
 mass = 53.23
+object_name = "Cuby Downs"
 
 [node name="StorageBase" parent="Objects" instance=ExtResource("4_xh1ep")]
-transform = Transform3D(-0.73316, 0, 0.680056, 0, 1, 0, -0.680056, 0, -0.73316, 3.38243, 0, -4.05663)
+transform = Transform3D(-0.73316, 0, 0.680056, 0, 1, 0, -0.680056, 0, -0.73316, 3.38243, 0.127953, -4.05663)
+object_name = "Body Freezer"

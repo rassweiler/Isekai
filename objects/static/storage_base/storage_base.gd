@@ -2,6 +2,8 @@ extends AnimatableBody3D
 
 @onready var lid = $Lid
 
+@export var object_name: String = "ObjectBase"
+
 var is_open = false
 
 # Called when the node enters the scene tree for the first time.
@@ -36,3 +38,6 @@ func close():
 	tween.tween_property(lid, "rotation",Vector3(deg2rad(0),0,0),0.2)
 	tween.parallel().tween_property(lid, "position",Vector3(0,1.025,0),0.2)
 	tween.tween_callback(toggle_open)
+
+func get_object_name():
+	return object_name

@@ -8,6 +8,28 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "StaticBody3D",
+"class": &"BasicBlock",
+"language": &"GDScript",
+"path": "res://addons/devblocks/blocks/basic_block.gd"
+}, {
+"base": "BasicBlock",
+"class": &"ColoredBlock",
+"language": &"GDScript",
+"path": "res://addons/devblocks/blocks/colored_block.gd"
+}, {
+"base": "ColoredBlock",
+"class": &"EmissionBlock",
+"language": &"GDScript",
+"path": "res://addons/devblocks/blocks/emission_block.gd"
+}]
+_global_script_class_icons={
+"BasicBlock": "",
+"ColoredBlock": "",
+"EmissionBlock": ""
+}
+
 [application]
 
 config/name="Isekai"

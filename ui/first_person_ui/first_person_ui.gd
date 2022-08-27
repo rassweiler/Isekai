@@ -1,5 +1,7 @@
 extends Control
 
+@onready var hint := $Hint
+
 var mouse_captured: bool = false
 
 func _input(event: InputEvent) -> void:
@@ -19,3 +21,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func show_hint(text):
+	hint.text = text
+	hint.visible = true
+	
+func hide_hint():
+	hint.visible = false

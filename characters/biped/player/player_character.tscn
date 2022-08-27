@@ -1,17 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1847fpsivnos"]
+[gd_scene load_steps=2 format=3 uid="uid://b1847fpsivnos"]
 
-[ext_resource type="PackedScene" uid="uid://64h3j42gyjt0" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="1_8ky7n"]
-[ext_resource type="PackedScene" uid="uid://d34armexgp1kf" path="res://ui/first_person_ui/first_person_ui.tscn" id="2_fixsp"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s0aid"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_onhey"]
-resource_local_to_scene = true
-friction = 0.0
-rough = true
-
-[node name="PlayerCharacter" type="Node3D"]
-
-[node name="FirstPersonControllerRigidbody" parent="." instance=ExtResource("1_8ky7n")]
-physics_material_override = SubResource("PhysicsMaterial_onhey")
-jump_velocity = 15.0
-
-[node name="FirstPersonUI" parent="FirstPersonControllerRigidbody" instance=ExtResource("2_fixsp")]
+[node name="PlayerCharacter" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_s0aid")
