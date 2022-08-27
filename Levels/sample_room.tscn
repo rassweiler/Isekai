@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqfufhh3qbegf"]
+[gd_scene load_steps=15 format=3 uid="uid://dqfufhh3qbegf"]
 
 [ext_resource type="PackedScene" uid="uid://dtwbwpgj5l554" path="res://Characters/first_person_camera_rigidbody/first_person_camera_rigid.tscn" id="1_lkdsc"]
+[ext_resource type="PackedScene" uid="uid://smnses4jnk14" path="res://UI/FirstPerson/UI.tscn" id="1_s856o"]
 [ext_resource type="PackedScene" uid="uid://pqoog0xhbug1" path="res://Objects/Bottle/Bottle.tscn" id="2_6406w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6a8v5"]
@@ -40,6 +41,8 @@ friction = 0.9
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="SampleRoom" type="Node3D"]
+
+[node name="UI" parent="." instance=ExtResource("1_s856o")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bk123")
