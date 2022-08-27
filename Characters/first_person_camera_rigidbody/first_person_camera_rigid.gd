@@ -6,6 +6,7 @@ extends RigidDynamicBody3D
 @export var speed = 15.0
 @export var max_speed = 15.0
 @export var view_sensitivity = 10.0
+@export var max_pick_weight = 90.0
 @export_range(0.01,1.0) var stop_speed = 0.1
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.

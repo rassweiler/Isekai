@@ -17,6 +17,7 @@ collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 90.0
 physics_material_override = SubResource("PhysicsMaterial_to0ij")
 continuous_cd = true
 contacts_reported = 1
@@ -36,6 +37,13 @@ shape = SubResource("ConvexPolygonShape3D_k2gcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64823, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 4
+
+[node name="HoldPosition" type="Node3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Feet" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142118, 0)
