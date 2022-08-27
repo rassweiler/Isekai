@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64823, 0)
 
 [node name="PickRay" type="RayCast3D" parent="Neck/Camera3D"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 4
+collision_mask = 12
 
 [node name="HoldPosition" type="Node3D" parent="Neck/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

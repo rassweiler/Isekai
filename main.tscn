@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tufwm33rged8"]
+[gd_scene load_steps=5 format=3 uid="uid://tufwm33rged8"]
 
 [ext_resource type="PackedScene" uid="uid://dqfufhh3qbegf" path="res://levels/test_bed/test_bed.tscn" id="1_wiyc4"]
 [ext_resource type="PackedScene" uid="uid://b1847fpsivnos" path="res://characters/biped/player/player_character.tscn" id="2_hidcv"]
 [ext_resource type="PackedScene" uid="uid://rvy43ajxfdyt" path="res://objects/base/object_base.tscn" id="3_t023y"]
+[ext_resource type="PackedScene" uid="uid://g55xpxnvuoyp" path="res://objects/static/storage_base/storage_base.tscn" id="4_xh1ep"]
 
 [node name="Main" type="Node"]
 
@@ -27,3 +28,6 @@ mass = 40.0
 [node name="ObjectBase3" parent="Objects" instance=ExtResource("3_t023y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401512, -4.67031)
 mass = 53.23
+
+[node name="StorageBase" parent="Objects" instance=ExtResource("4_xh1ep")]
+transform = Transform3D(-0.73316, 0, 0.680056, 0, 1, 0, -0.680056, 0, -0.73316, 3.38243, 0, -4.05663)

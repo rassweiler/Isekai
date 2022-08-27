@@ -1,7 +1,7 @@
 extends RigidDynamicBody3D
 
 @export var acceleration = 1.2
-@export var jump_velocity = 150.0
+@export var jump_velocity = 110.0
 @export var speed = 900.0
 @export var max_speed = 900.0
 @export var view_sensitivity = 10.0
@@ -40,6 +40,9 @@ func _input(event: InputEvent) -> void:
 			drop_object()
 		else:
 			grab_object()
+	if Input.is_action_just_pressed("interact"):
+		if held_object == null and ray_object:
+			interact()
 	
 func _integrate_forces(state):
 	if state.linear_velocity.length() > max_speed:
@@ -69,7 +72,6 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor:
 		is_on_floor = false
-		print("jumping")
 		apply_central_impulse(Vector3.UP * jump_velocity * mass)
 		
 	if held_object != null:
@@ -82,3 +84,8 @@ func grab_object():
 
 func drop_object():
 	held_object = null
+
+func interact():
+	if ray_object.is_in_group("Interactable"):
+		ray_object.interact()
+	

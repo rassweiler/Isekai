@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://g55xpxnvuoyp"]
+
+[ext_resource type="Script" path="res://objects/static/storage_base/storage_base.gd" id="1_6xeax"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mi25"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sy7we"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ievt5"]
+size = Vector3(2, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2uo6"]
+size = Vector3(2, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_088rp"]
+size = Vector3(1, 0.1, 1)
+
+[node name="StorageBase" type="AnimatableBody3D" groups=["Interactable"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_6xeax")
+
+[node name="Base" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4mi25")
+
+[node name="BaseMesh" type="MeshInstance3D" parent="Base"]
+mesh = SubResource("BoxMesh_sy7we")
+skeleton = NodePath("../..")
+
+[node name="Lid" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.025, 0)
+shape = SubResource("BoxShape3D_ievt5")
+
+[node name="LidMesh" type="MeshInstance3D" parent="Lid"]
+mesh = SubResource("BoxMesh_i2uo6")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137256, -0.194137)
+mesh = SubResource("BoxMesh_088rp")
