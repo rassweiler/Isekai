@@ -1,6 +1,6 @@
 extends Control
 
-var mouse_captured: bool = true
+var mouse_captured: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
