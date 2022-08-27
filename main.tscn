@@ -17,5 +17,13 @@
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="ObjectBase" parent="Objects" instance=ExtResource("3_t023y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82707, -4.52233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9735, -4.52233)
 mass = 30.0
+
+[node name="ObjectBase2" parent="Objects" instance=ExtResource("3_t023y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145819, 1.52827, -4.54061)
+mass = 40.0
+
+[node name="ObjectBase3" parent="Objects" instance=ExtResource("3_t023y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.401512, -4.67031)
+mass = 53.23

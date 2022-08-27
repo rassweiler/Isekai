@@ -12,6 +12,13 @@ rough = true
 
 [node name="FirstPersonControllerRigidbody" parent="." instance=ExtResource("1_8ky7n")]
 physics_material_override = SubResource("PhysicsMaterial_onhey")
+acceleration = 1.2
 jump_velocity = 15.0
+speed = 900.0
+max_speed = 900.0
+view_sensitivity = 10.0
+max_pick_weight = 50.0
+pick_strength = 0.1
+stop_speed = 0.01
 
 [node name="FirstPersonUI" parent="FirstPersonControllerRigidbody" instance=ExtResource("2_fixsp")]

@@ -5,7 +5,8 @@ extends RigidDynamicBody3D
 @export var speed = 900.0
 @export var max_speed = 900.0
 @export var view_sensitivity = 10.0
-@export var max_pick_weight = 90.0
+@export var max_pick_weight = 50.0
+@export var pick_strength = 0.1
 @export_range(0.001,1.0) var stop_speed = 0.01
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
@@ -14,11 +15,18 @@ var velocity = Vector3()
 var mouse_input = Vector2()
 var is_on_floor = false
 var move_input = Vector2()
+var held_object: Object = null
+var ray_object: Object = null
 
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
 @onready var feet := $Feet
 @onready var body := $CollisionShape
+@onready var pick_ray := $Neck/Camera3D/PickRay
+@onready var hold_position := $Neck/Camera3D/HoldPosition
+
+func _process(delta):
+	ray_object = pick_ray.get_collider()
 
 func _input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -27,9 +35,11 @@ func _input(event: InputEvent) -> void:
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg2rad(-50), deg2rad(80))
 			mouse_input = event.relative
-			
-func _ready():
-	linear_damp = 1.0
+	if Input.is_action_just_pressed("grab_object"):
+		if held_object:
+			drop_object()
+		else:
+			grab_object()
 	
 func _integrate_forces(state):
 	if state.linear_velocity.length() > max_speed:
@@ -61,4 +71,14 @@ func _physics_process(delta):
 		is_on_floor = false
 		print("jumping")
 		apply_central_impulse(Vector3.UP * jump_velocity * mass)
+		
+	if held_object != null:
+		held_object.set_linear_velocity((hold_position.global_transform.origin - held_object.global_transform.origin) * pick_strength * max_pick_weight)
 
+func grab_object():
+	var collider = pick_ray.get_collider()
+	if ray_object != null and ray_object.is_in_group("Pickable") and ray_object.mass <= max_pick_weight:
+		held_object = ray_object
+
+func drop_object():
+	held_object = null
