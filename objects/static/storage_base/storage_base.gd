@@ -2,7 +2,7 @@ extends AnimatableBody3D
 
 @onready var lid = $Lid
 @onready var pickup_hint: String = "Pickup " + object_name
-@onready var interact_hint: String = "E: Intreract"
+@onready var interact_hint: String = "Open/Close"
 
 @export var object_name: String = "ObjectBase"
 
@@ -22,6 +22,7 @@ func interact():
 
 	else:
 		open()
+	return null
 
 func toggle_open():
 	is_open = !is_open

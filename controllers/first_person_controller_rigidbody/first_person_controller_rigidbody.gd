@@ -34,11 +34,16 @@ func _process(delta):
 		ray_object_old = ray_object
 		if ray_object:
 			var pick_hint: String
+			var inte_hint: String
 			if ray_object.is_in_group("Pickable") and ray_object.mass <= max_pick_weight: 
 				pick_hint = "F: " + ray_object.get_pickup_hint()
 			else: 
-				pick_hint = "Unable to pickup " + ray_object.get_object_name() 
-			ui.show_hints(ray_object.get_object_name(), pick_hint,ray_object.get_interact_hint())
+				pick_hint = "F: Too Heavy!"
+			if ray_object.is_in_group("Interactable"): 
+				inte_hint = "E: " + ray_object.get_interact_hint()
+			else: 
+				inte_hint = "" 
+			ui.show_hints(ray_object.get_object_name(), pick_hint, inte_hint)
 		else:
 			ui.hide_hints()
 
@@ -101,5 +106,8 @@ func drop_object():
 
 func interact():
 	if ray_object.is_in_group("Interactable"):
-		ray_object.interact()
+		var act = ray_object.interact()
+		if act != null:
+			if act[0] == "Armour":
+				model.equip_object(ray_object, act[1])
 	

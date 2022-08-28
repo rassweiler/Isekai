@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3fwrofit51xl"]
+
+[ext_resource type="Script" path="res://objects/dynamic/equipment/base/equipment_base.gd" id="1_t2s4c"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_grovw"]
+top_radius = 0.4
+height = 0.125
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yjjji"]
+height = 0.125
+
+[node name="EquipmentBase" type="RigidDynamicBody3D" groups=["Interactable", "Pickable"]]
+collision_layer = 4
+collision_mask = 15
+mass = 1.5
+script = ExtResource("1_t2s4c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0742348, 0)
+mesh = SubResource("CylinderMesh_grovw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0736157, 0)
+shape = SubResource("CylinderShape3D_yjjji")
