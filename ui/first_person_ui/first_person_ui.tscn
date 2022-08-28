@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d34armexgp1kf"]
+[gd_scene load_steps=4 format=3 uid="uid://d34armexgp1kf"]
 
 [ext_resource type="Texture2D" uid="uid://u5ntth5kfibm" path="res://assets/images/crosshair.png" id="1_nbnma"]
 [ext_resource type="Script" path="res://ui/first_person_ui/first_person_ui.gd" id="1_qefni"]
-[ext_resource type="PackedScene" uid="uid://bp2grfbij6ggw" path="res://ui/pause_menu/pause_menu.tscn" id="3_38odo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wau08"]
 font_size = 22
@@ -67,5 +66,3 @@ offset_bottom = 15.5
 label_settings = SubResource("LabelSettings_wau08")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PauseMenu" parent="." instance=ExtResource("3_38odo")]

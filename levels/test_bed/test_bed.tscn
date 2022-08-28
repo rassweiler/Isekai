@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqfufhh3qbegf"]
+[gd_scene load_steps=9 format=3 uid="uid://dqfufhh3qbegf"]
 
 [ext_resource type="PackedScene" uid="uid://dj26sacnhty4r" path="res://addons/devblocks/blocks/basic_block.tscn" id="1_dtima"]
 [ext_resource type="PackedScene" uid="uid://camvcri7e11vi" path="res://addons/devblocks/blocks/colored_block.tscn" id="2_h160b"]
+[ext_resource type="PackedScene" uid="uid://rvy43ajxfdyt" path="res://objects/base/object_base.tscn" id="3_hiw6o"]
+[ext_resource type="PackedScene" uid="uid://c3fwrofit51xl" path="res://objects/dynamic/equipment/base/equipment_base.tscn" id="4_1frjx"]
+[ext_resource type="PackedScene" uid="uid://g55xpxnvuoyp" path="res://objects/static/storage_base/storage_base.tscn" id="5_o3fyg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6a8v5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -62,3 +65,19 @@ block_color_group = 4
 [node name="ColoredBlock3" parent="." instance=ExtResource("2_h160b")]
 transform = Transform3D(0.911579, 0, 0, 0, 0.758879, 0, 0, 0, 0.717732, -9.1324, 1.96784, 10.5989)
 block_color_group = 5
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="ObjectBase" parent="Objects" instance=ExtResource("3_hiw6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73213, 0)
+mass = 22.54
+
+[node name="ObjectBase2" parent="Objects" instance=ExtResource("3_hiw6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05261, 3.36968, 0)
+mass = 58.17
+
+[node name="EquipmentBase" parent="Objects" instance=ExtResource("4_1frjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44569, 1.19735)
+
+[node name="StorageBase" parent="Objects" instance=ExtResource("5_o3fyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.89099)

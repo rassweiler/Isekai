@@ -4,21 +4,21 @@ extends ColorRect
 @onready var resume_button: Button = $CenterContainer/Panel/MarginContainer/VBoxContainer/ResumeButton
 @onready var quit_button: Button = $CenterContainer/Panel/MarginContainer/VBoxContainer/QuitButton
 
+signal resume_game_signal
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	resume_button.pressed.connect(unpause)
+	resume_button.pressed.connect(close_menu)
 	quit_button.pressed.connect(get_tree().quit)
+	open_menu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func pause():
+func open_menu():
 	animator.play("Pause")
-	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-func unpause():
+func close_menu():
 	animator.play("Unpause")
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	emit_signal("resume_game_signal")
