@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dmjqv7jf3bh53"]
+
+[node name="EquipmentMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VFlowContainer3" type="VFlowContainer" parent="CenterContainer"]
+offset_left = 412.0
+offset_top = 200.0
+offset_right = 612.0
+offset_bottom = 400.0
+
+[node name="VFlowContainer" type="HFlowContainer" parent="CenterContainer/VFlowContainer3"]
+offset_right = 64.0
+offset_bottom = 200.0
+
+[node name="TextureRect" type="Control" parent="CenterContainer/VFlowContainer3/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="GloveSlot" type="TextureRect" parent="CenterContainer/VFlowContainer3/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 132.0
+
+[node name="TextureRect3" type="Control" parent="CenterContainer/VFlowContainer3/VFlowContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 200.0
+
+[node name="VFlowContainer2" type="HFlowContainer" parent="CenterContainer/VFlowContainer3"]
+offset_left = 68.0
+offset_right = 132.0
+offset_bottom = 200.0
+
+[node name="HeadSlot" type="TextureRect" parent="CenterContainer/VFlowContainer3/VFlowContainer2"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="ChestSlot" type="TextureRect" parent="CenterContainer/VFlowContainer3/VFlowContainer2"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 132.0
+
+[node name="LegSlot" type="TextureRect" parent="CenterContainer/VFlowContainer3/VFlowContainer2"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 200.0
+
+[node name="VFlowContainer3" type="HFlowContainer" parent="CenterContainer/VFlowContainer3"]
+offset_left = 136.0
+offset_right = 200.0
+offset_bottom = 200.0
+
+[node name="TextureRect" type="Control" parent="CenterContainer/VFlowContainer3/VFlowContainer3"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="BackpackSlot" type="TextureRect" parent="CenterContainer/VFlowContainer3/VFlowContainer3"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 68.0
+offset_right = 64.0
+offset_bottom = 132.0
+
+[node name="TextureRect3" type="Control" parent="CenterContainer/VFlowContainer3/VFlowContainer3"]
+custom_minimum_size = Vector2(64, 64)
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 200.0
