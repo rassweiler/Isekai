@@ -23,11 +23,17 @@ _global_script_classes=[{
 "class": &"EmissionBlock",
 "language": &"GDScript",
 "path": "res://addons/devblocks/blocks/emission_block.gd"
+}, {
+"base": "RigidDynamicBody3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://characters/base/entity.gd"
 }]
 _global_script_class_icons={
 "BasicBlock": "",
 "ColoredBlock": "",
-"EmissionBlock": ""
+"EmissionBlock": "",
+"Entity": ""
 }
 
 [application]
