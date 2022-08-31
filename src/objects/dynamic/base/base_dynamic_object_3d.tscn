@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d18f7a8c7pk8e"]
+
+[ext_resource type="Script" path="res://src/objects/dynamic/base/base_dynamic_object_3d.gd" id="1_06i2c"]
+
+[node name="BaseDynamicObject3D" type="RigidDynamicBody3D"]
+script = ExtResource("1_06i2c")

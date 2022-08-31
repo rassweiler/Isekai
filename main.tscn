@@ -19,6 +19,7 @@ script = ExtResource("1_7fcft")
 [node name="Characters" type="Node3D" parent="."]
 
 [node name="FirstPersonControllerRigidbody" parent="Characters" instance=ExtResource("2_cr0jd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.692746)
 physics_material_override = SubResource("PhysicsMaterial_bm647")
 
 [node name="Menus" type="CanvasLayer" parent="."]

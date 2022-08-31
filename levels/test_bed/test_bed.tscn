@@ -76,8 +76,12 @@ mass = 22.54
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05261, 3.36968, 0)
 mass = 58.17
 
+[node name="ObjectBase3" parent="Objects" instance=ExtResource("3_hiw6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53118, 3.38583, -2.10426)
+mass = 58.17
+
 [node name="EquipmentBase" parent="Objects" instance=ExtResource("4_1frjx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44569, 1.19735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44569, -2.80621)
 
 [node name="StorageBase" parent="Objects" instance=ExtResource("5_o3fyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.89099)
