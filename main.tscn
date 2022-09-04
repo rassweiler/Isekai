@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqfufhh3qbegf" path="res://levels/test_bed/test_bed.tscn" id="1_wiyc4"]
 [ext_resource type="PackedScene" uid="uid://64h3j42gyjt0" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="2_cr0jd"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bm647"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yfsdj"]
 resource_local_to_scene = true
 friction = 0.0
 rough = true
@@ -20,6 +20,6 @@ script = ExtResource("1_7fcft")
 
 [node name="FirstPersonControllerRigidbody" parent="Characters" instance=ExtResource("2_cr0jd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.692746)
-physics_material_override = SubResource("PhysicsMaterial_bm647")
+physics_material_override = SubResource("PhysicsMaterial_yfsdj")
 
 [node name="Menus" type="CanvasLayer" parent="."]

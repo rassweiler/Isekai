@@ -1,4 +1,45 @@
-[gd_scene format=3 uid="uid://fbcktfwqx45c"]
+[gd_scene load_steps=3 format=3 uid="uid://fbcktfwqx45c"]
+
+[ext_resource type="Script" path="res://src/ui/object_panel/object_panel.gd" id="1_m4jhe"]
+
+[sub_resource type="Texture2D" id="Texture2D_hib8j"]
+resource_local_to_scene = false
+resource_name = ""
 
 [node name="ObjectPanel" type="Panel"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
+script = ExtResource("1_m4jhe")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 92.0
+offset_bottom = 92.0
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+offset_right = 88.0
+offset_bottom = 62.0
+size_flags_vertical = 3
+texture = SubResource("Texture2D_hib8j")
+
+[node name="DropButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 66.0
+offset_right = 88.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 10
+text = "Drop"
