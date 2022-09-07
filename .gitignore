@@ -6,5 +6,4 @@ export_presets.cfg
 .mono/
 Assets-Proprietary/
 *.import
-exports/linux/export*
-exports/windows/export*
+exports/*
