@@ -10,6 +10,11 @@ config_version=5
 
 _global_script_classes=[{
 "base": "RigidBody3D",
+"class": &"BaseDynamicEntity3D",
+"language": &"GDScript",
+"path": "res://entities/base_dynamic_entity/base_dynamic_entity_3d.gd"
+}, {
+"base": "RigidBody3D",
 "class": &"BaseDynamicObject3D",
 "language": &"GDScript",
 "path": "res://objects/dynamic/base/base_dynamic_object_3d.gd"
@@ -19,15 +24,20 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://objects/dynamic/equipment/base/base_equipment_object_3d.gd"
 }, {
-"base": "StaticBody3D",
+"base": "BaseDynamicObject3D",
 "class": &"BaseFurnitureObject3D",
 "language": &"GDScript",
-"path": "res://objects/static/base/base_static_object_3d.gd"
+"path": "res://objects/dynamic/furniture/base/base_furniture_object_3d.gd"
 }, {
 "base": "ColorRect",
 "class": &"BaseMenu",
 "language": &"GDScript",
 "path": "res://ui/menus/base/base_menu.gd"
+}, {
+"base": "StaticBody3D",
+"class": &"BaseStaticObject3D",
+"language": &"GDScript",
+"path": "res://objects/static/base/base_static_object_3d.gd"
 }, {
 "base": "RigidDynamicBody3D",
 "class": &"Entity",
@@ -40,10 +50,12 @@ _global_script_classes=[{
 "path": "res://ui/object_panel/object_panel.gd"
 }]
 _global_script_class_icons={
+"BaseDynamicEntity3D": "",
 "BaseDynamicObject3D": "",
 "BaseEquipmentObject3D": "",
 "BaseFurnitureObject3D": "",
 "BaseMenu": "",
+"BaseStaticObject3D": "",
 "Entity": "",
 "ObjectPanel": ""
 }
