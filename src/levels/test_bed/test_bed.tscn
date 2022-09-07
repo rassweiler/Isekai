@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqfufhh3qbegf"]
+
+[ext_resource type="Material" uid="uid://uou43s08desh" path="res://assets/materials/dev_grid_material.tres" id="1_dj0eq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6a8v5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_r26gh"]
+sky_material = SubResource("ProceduralSkyMaterial_6a8v5")
+
+[sub_resource type="Environment" id="Environment_bk123"]
+background_mode = 2
+sky = SubResource("Sky_r26gh")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestBed" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bk123")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="CsgCombiner3d" type="CSGCombiner3D" parent="Buildings"]
+material_override = ExtResource("1_dj0eq")
+use_collision = true
+collision_layer = 2
+collision_mask = 13
+
+[node name="CsgBox3d" type="CSGBox3D" parent="Buildings/CsgCombiner3d"]
+size = Vector3(88, 16, 72)
+
+[node name="CsgBox3d2" type="CSGBox3D" parent="Buildings/CsgCombiner3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+operation = 2
+size = Vector3(86, 20, 70)
+
+[node name="CsgCombiner3d2" type="CSGCombiner3D" parent="Buildings"]
+material_override = ExtResource("1_dj0eq")
+use_collision = true
+collision_layer = 2
+collision_mask = 13
+
+[node name="CsgBox3d" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+size = Vector3(16, 4, 16)
+
+[node name="CsgBox3d5" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+operation = 2
+size = Vector3(14, 4, 14)
+
+[node name="CsgBox3d2" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 0)
+size = Vector3(12, 4, 12)
+
+[node name="CsgBox3d4" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 5)
+operation = 2
+size = Vector3(2, 2, 2)
+
+[node name="CsgBox3d6" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3, 1)
+operation = 2
+size = Vector3(2, 2, 2)
+
+[node name="CsgBox3d3" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.414, 0)
+operation = 2
+size = Vector3(10, 3.17591, 10)
+
+[node name="CsgPolygon3d" type="CSGPolygon3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 9)
+polygon = PackedVector2Array(-1, 0, -1, 3, 1, 3, 4, 0, 1, 0)
+
+[node name="CsgPolygon3d2" type="CSGPolygon3D" parent="Buildings/CsgCombiner3d2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 10)
+polygon = PackedVector2Array(-1, 0, -1, 3, 1, 3, 4, 0, 1, 0)

@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba1q8qud06xvg"]
+[gd_scene load_steps=3 format=3 uid="uid://ba1q8qud06xvg"]
 
-[ext_resource type="Script" path="res://src/objects/dynamic/equipment/base/base_equipment_object_3d.gd" id="1_kfeuu"]
+[ext_resource type="PackedScene" uid="uid://d18f7a8c7pk8e" path="res://objects/dynamic/base/base_dynamic_object_3d.tscn" id="1_02dyh"]
+[ext_resource type="Script" path="res://objects/dynamic/equipment/base/base_equipment_object_3d.gd" id="2_kgius"]
 
-[node name="BaseEquipmentObject3D" type="RigidDynamicBody3D"]
-script = ExtResource("1_kfeuu")
+[node name="BaseEquipmentObject3D" instance=ExtResource("1_02dyh")]
+script = ExtResource("2_kgius")
+equip_location = null
+icon = null
+object_name = null
+mesh = null
+collision_shape = null
+is_stackable = null
+stack_ammount = null
+stack_limit = null
+owner_name = null
+object_type = null

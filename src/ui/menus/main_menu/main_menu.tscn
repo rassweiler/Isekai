@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8wcdffgqgqno"]
+
+[ext_resource type="PackedScene" uid="uid://bnrrh7qebrkas" path="res://ui/menus/base/base_menu.tscn" id="1_of5j2"]
+[ext_resource type="Script" path="res://ui/menus/main_menu/main_menu.gd" id="2_ge5te"]
+
+[node name="MainsMenu" instance=ExtResource("1_of5j2")]
+script = ExtResource("2_ge5te")
+
+[node name="Panel" type="Panel" parent="CenterContainer" index="0"]
+custom_minimum_size = Vector2(300, 400)
+offset_left = 426.0
+offset_top = 124.0
+offset_right = 726.0
+offset_bottom = 524.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" index="0"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 284.0
+offset_bottom = 384.0
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+offset_right = 268.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+offset_top = 41.0
+offset_right = 268.0
+offset_bottom = 119.0
+size_flags_vertical = 3
+text = "New Game"
+
+[node name="LoadButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="2"]
+offset_top = 123.0
+offset_right = 268.0
+offset_bottom = 202.0
+size_flags_vertical = 3
+text = "Load Game"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="3"]
+offset_top = 206.0
+offset_right = 268.0
+offset_bottom = 285.0
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="4"]
+offset_top = 289.0
+offset_right = 268.0
+offset_bottom = 368.0
+size_flags_vertical = 3
+text = "Quit"

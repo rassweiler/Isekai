@@ -1,0 +1,138 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "RigidBody3D",
+"class": &"BaseDynamicObject3D",
+"language": &"GDScript",
+"path": "res://objects/dynamic/base/base_dynamic_object_3d.gd"
+}, {
+"base": "BaseDynamicObject3D",
+"class": &"BaseEquipmentObject3D",
+"language": &"GDScript",
+"path": "res://objects/dynamic/equipment/base/base_equipment_object_3d.gd"
+}, {
+"base": "StaticBody3D",
+"class": &"BaseFurnitureObject3D",
+"language": &"GDScript",
+"path": "res://objects/static/base/base_static_object_3d.gd"
+}, {
+"base": "ColorRect",
+"class": &"BaseMenu",
+"language": &"GDScript",
+"path": "res://ui/menus/base/base_menu.gd"
+}, {
+"base": "RigidDynamicBody3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://characters/base/entity.gd"
+}, {
+"base": "Panel",
+"class": &"ObjectPanel",
+"language": &"GDScript",
+"path": "res://ui/object_panel/object_panel.gd"
+}]
+_global_script_class_icons={
+"BaseDynamicObject3D": "",
+"BaseEquipmentObject3D": "",
+"BaseFurnitureObject3D": "",
+"BaseMenu": "",
+"Entity": "",
+"ObjectPanel": ""
+}
+
+[application]
+
+config/name="Isekai"
+config/description="Simple rpg game test for SWG style exploration and building as a first person game. "
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_text_scroll_up={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":true,"pressed":false,"keycode":16777232,"physical_keycode":0,"unicode":16777232,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"pressed":false,"double_click":false,"script":null)
+]
+}
+ui_text_scroll_down={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":true,"pressed":false,"keycode":16777234,"physical_keycode":0,"unicode":16777234,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"pressed":false,"double_click":false,"script":null)
+]
+}
+move_left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"unicode":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"unicode":0,"echo":false,"script":null)
+]
+}
+move_forward={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
+]
+}
+move_back={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
+]
+}
+jump={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+]
+}
+grab_object={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"unicode":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"unicode":0,"echo":false,"script":null)
+]
+}
+open_inventory={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777218,"unicode":0,"echo":false,"script":null)
+]
+}
+toggle_mouse_visible={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777240,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Characters"
+3d_physics/layer_2="Static World"
+3d_physics/layer_3="Dynamic Object"
+3d_physics/layer_4="Static Object"
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+3d/solver/solver_iterations=18
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

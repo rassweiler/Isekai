@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt7515lkttwi7"]
+
+[ext_resource type="Script" path="res://objects/static/base/base_static_object_3d.gd" id="1_7r4jg"]
+
+[node name="BaseStaticObject3D" type="StaticBody3D"]
+script = ExtResource("1_7r4jg")

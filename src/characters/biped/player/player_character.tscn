@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1847fpsivnos"]
+
+[ext_resource type="Script" path="res://characters/biped/player/player_character.gd" id="1_0dhtb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s0aid"]
+
+[node name="PlayerCharacter" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_s0aid")
+script = ExtResource("1_0dhtb")
+
+[node name="ChestLocation" type="Marker3D" parent="."]
+
+[node name="HeadLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.929834, 0)

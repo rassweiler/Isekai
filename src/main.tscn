@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://tufwm33rged8"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7fcft"]
+[ext_resource type="PackedScene" uid="uid://dqfufhh3qbegf" path="res://levels/test_bed/test_bed.tscn" id="1_wiyc4"]
+[ext_resource type="PackedScene" uid="uid://64h3j42gyjt0" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="2_cr0jd"]
+[ext_resource type="PackedScene" uid="uid://d18f7a8c7pk8e" path="res://objects/dynamic/base/base_dynamic_object_3d.tscn" id="4_e7hdk"]
+[ext_resource type="PackedScene" uid="uid://ba1q8qud06xvg" path="res://objects/dynamic/equipment/base/base_equipment_object_3d.tscn" id="5_dpemh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pvfn7"]
+resource_local_to_scene = true
+friction = 0.0
+rough = true
+
+[node name="Main" type="Node"]
+script = ExtResource("1_7fcft")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="TestBed" parent="Level" instance=ExtResource("1_wiyc4")]
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="FirstPersonControllerRigidbody" parent="Characters" instance=ExtResource("2_cr0jd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.89327, 15.8645)
+physics_material_override = SubResource("PhysicsMaterial_pvfn7")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="BaseDynamicObject3D" parent="Objects" instance=ExtResource("4_e7hdk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.267731, -4.87926, 11.5943)
+
+[node name="BaseEquipmentObject3D" parent="Objects" instance=ExtResource("5_dpemh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4907, -3, 13)
+equip_location = null
+icon = null
+object_name = null
+mesh = null
+collision_shape = null
+is_stackable = null
+stack_ammount = null
+stack_limit = null
+owner_name = null
+object_type = null
+
+[node name="Menus" type="CanvasLayer" parent="."]

@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d18f7a8c7pk8e"]
+[gd_scene load_steps=4 format=3 uid="uid://d18f7a8c7pk8e"]
 
-[ext_resource type="Script" path="res://src/objects/dynamic/base/base_dynamic_object_3d.gd" id="1_06i2c"]
+[ext_resource type="Script" path="res://objects/dynamic/base/base_dynamic_object_3d.gd" id="1_38ndb"]
+[ext_resource type="BoxMesh" uid="uid://b2gdeo51sk88l" path="res://assets/meshes/base_dynamic_object_3d_mesh.tres" id="2_myauc"]
+[ext_resource type="Shape3D" uid="uid://bqc5sfdeet3ce" path="res://assets/collision_shapes/base_dynamic_object_3d_collision_shape.tres" id="3_bm0bw"]
 
-[node name="BaseDynamicObject3D" type="RigidDynamicBody3D"]
-script = ExtResource("1_06i2c")
+[node name="BaseDynamicObject3D" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_38ndb")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_myauc")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = ExtResource("3_bm0bw")

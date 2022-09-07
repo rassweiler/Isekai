@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://fbcktfwqx45c"]
+[gd_scene load_steps=7 format=3 uid="uid://fbcktfwqx45c"]
 
-[ext_resource type="Script" path="res://src/ui/object_panel/object_panel.gd" id="1_m4jhe"]
-
-[sub_resource type="Texture2D" id="Texture2D_hib8j"]
-resource_local_to_scene = false
-resource_name = ""
+[ext_resource type="Script" path="res://ui/object_panel/object_panel.gd" id="1_yx06n"]
+[ext_resource type="Texture2D" uid="uid://vf14nbeytyst" path="res://assets/textures/object_panel_generic.tres" id="2_kbj8w"]
+[ext_resource type="Texture2D" uid="uid://cj725x1dhx1wu" path="res://assets/images/drop_object_base.png" id="2_kr7lr"]
+[ext_resource type="Texture2D" uid="uid://dy3smx3hq6e6v" path="res://assets/images/drop_object_pressed.png" id="3_8dpxr"]
+[ext_resource type="Texture2D" uid="uid://t3u1ptshdkex" path="res://assets/images/drop_object_hover.png" id="4_l1syj"]
+[ext_resource type="Texture2D" uid="uid://dvf8kgqtckpbe" path="res://assets/images/drop_object_disabled.png" id="5_4e7pq"]
 
 [node name="ObjectPanel" type="Panel"]
-custom_minimum_size = Vector2(96, 96)
-script = ExtResource("1_m4jhe")
+custom_minimum_size = Vector2(90, 90)
+script = ExtResource("1_yx06n")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,24 +22,46 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="IconBG" type="TextureRect" parent="MarginContainer"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 92.0
-offset_bottom = 92.0
-
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-offset_right = 88.0
-offset_bottom = 62.0
+offset_right = 86.0
+offset_bottom = 86.0
 size_flags_vertical = 3
-texture = SubResource("Texture2D_hib8j")
+texture = ExtResource("2_kbj8w")
+ignore_texture_size = true
 
-[node name="DropButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 86.0
+ignore_texture_size = true
+
+[node name="DropButton" type="TextureButton" parent="MarginContainer"]
+custom_minimum_size = Vector2(26, 26)
+offset_left = 60.0
+offset_top = 4.0
+offset_right = 86.0
+offset_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_kr7lr")
+texture_pressed = ExtResource("3_8dpxr")
+texture_hover = ExtResource("4_l1syj")
+texture_disabled = ExtResource("5_4e7pq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Ammount" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
+offset_left = 4.0
 offset_top = 66.0
-offset_right = 88.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 10
-text = "Drop"
+offset_right = 24.0
+offset_bottom = 86.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
