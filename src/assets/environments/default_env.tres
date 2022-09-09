@@ -1,0 +1,33 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://beg6c2m8wo7tt"]
+
+[sub_resource type="Gradient" id="Gradient_rpeas"]
+offsets = PackedFloat32Array(0.0740741, 0.133333)
+colors = PackedColorArray(1, 1, 1, 1, 0.0621621, 0.0709941, 0.249838, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3cgbp"]
+noise_type = 5
+frequency = 0.455
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rkdi0"]
+width = 2046
+height = 2046
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.345
+color_ramp = SubResource("Gradient_rpeas")
+noise = SubResource("FastNoiseLite_3cgbp")
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_17moh"]
+rayleigh_color = Color(0.215686, 0.372549, 0.780392, 1)
+mie_color = Color(0.784314, 0.815686, 0.854902, 1)
+turbidity = 5.0
+sun_disk_scale = 0.0
+ground_color = Color(0.0784314, 0.0784314, 0.0313726, 1)
+night_sky = SubResource("NoiseTexture2D_rkdi0")
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("PhysicalSkyMaterial_17moh")
+
+[resource]
+background_mode = 2
+sky = SubResource("1")

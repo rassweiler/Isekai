@@ -1,6 +1,6 @@
 extends Node
 
-@onready var menu_list := $Menus
+@onready var menu_list := $UI
 
 var pause_scene := preload("res://ui/menus/pause_menu/pause_menu.tscn")
 var inventory_scene := preload("res://ui/menus/inventory_menu/inventory_menu.tscn")

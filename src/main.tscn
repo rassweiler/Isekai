@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://tufwm33rged8"]
+[gd_scene load_steps=11 format=3 uid="uid://tufwm33rged8"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_7fcft"]
 [ext_resource type="PackedScene" uid="uid://dqfufhh3qbegf" path="res://levels/test_bed/test_bed.tscn" id="1_wiyc4"]
-[ext_resource type="PackedScene" uid="uid://64h3j42gyjt0" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="2_cr0jd"]
+[ext_resource type="PackedScene" uid="uid://tg37f4qx1gfw" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.tscn" id="2_cr0jd"]
 [ext_resource type="PackedScene" uid="uid://d18f7a8c7pk8e" path="res://objects/dynamic/base/base_dynamic_object_3d.tscn" id="4_e7hdk"]
 [ext_resource type="PackedScene" uid="uid://74f4awml64pv" path="res://entities/base_dynamic_entity/base_dynamic_entity_3d.tscn" id="4_wfksh"]
 [ext_resource type="PackedScene" uid="uid://ba1q8qud06xvg" path="res://objects/dynamic/equipment/base/base_equipment_object_3d.tscn" id="5_dpemh"]
 [ext_resource type="PackedScene" uid="uid://dt7515lkttwi7" path="res://objects/static/base/base_static_object_3d.tscn" id="6_5m3y7"]
+[ext_resource type="PackedScene" uid="uid://d34armexgp1kf" path="res://ui/first_person_ui/first_person_ui.tscn" id="8_laban"]
+[ext_resource type="Environment" uid="uid://beg6c2m8wo7tt" path="res://assets/environments/base_environment.tres" id="9_4ajxo"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ktnaf"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mbbpw"]
 resource_local_to_scene = true
 friction = 0.0
 rough = true
@@ -24,7 +26,7 @@ script = ExtResource("1_7fcft")
 
 [node name="FirstPersonControllerRigidbody" parent="Characters" instance=ExtResource("2_cr0jd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.89327, 15.8645)
-physics_material_override = SubResource("PhysicsMaterial_ktnaf")
+physics_material_override = SubResource("PhysicsMaterial_mbbpw")
 
 [node name="BaseDynamicEntity3D" parent="Characters" instance=ExtResource("4_wfksh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70282, 0, 11.4751)
@@ -41,4 +43,23 @@ mass = 200.0
 [node name="BaseStaticObject3D" parent="Objects" instance=ExtResource("6_5m3y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -5.52979, 0)
 
-[node name="Menus" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ss" parent="UI" instance=ExtResource("8_laban")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("9_4ajxo")
+
+[node name="SunMoon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.503744, 0.863853, 0, -0.863853, 0.503744, 5.40562, 69.8224, 32.7471)
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="SunMoon"]
+shadow_enabled = true
+
+[node name="DirectionalLight3d2" type="DirectionalLight3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(0.690196, 0.737255, 0.803922, 1)
+light_energy = 0.25
+light_indirect_energy = 0.25
+shadow_enabled = true
+sky_mode = 1
