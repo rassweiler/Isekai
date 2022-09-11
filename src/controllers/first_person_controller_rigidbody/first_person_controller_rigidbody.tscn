@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://tg37f4qx1gfw"]
+[gd_scene load_steps=13 format=3 uid="uid://tg37f4qx1gfw"]
 
 [ext_resource type="Script" path="res://controllers/first_person_controller_rigidbody/first_person_controller_rigidbody.gd" id="1_c5av4"]
-[ext_resource type="PackedScene" path="res://characters/biped/player/player_character.tscn" id="2_whv0k"]
-[ext_resource type="PackedScene" path="res://ui/first_person_ui/first_person_ui.tscn" id="3_56gib"]
+[ext_resource type="PackedScene" uid="uid://b1847fpsivnos" path="res://characters/biped/player/player_character.tscn" id="2_whv0k"]
+[ext_resource type="PackedScene" uid="uid://d34armexgp1kf" path="res://ui/first_person_ui/first_person_ui.tscn" id="3_56gib"]
+[ext_resource type="PackedScene" uid="uid://bgjdw5dbiepqv" path="res://assets/3RDPARTY/Adventurer.glb" id="4_ewbuv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_to0ij"]
 resource_local_to_scene = true
 rough = true
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k2gcp"]
-points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eiiyn"]
+radius = 0.232391
+height = 1.8122
 
 [sub_resource type="Gradient" id="Gradient_rpeas"]
 offsets = PackedFloat32Array(0.0740741, 0.133333)
@@ -19,7 +21,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.0621621, 0.0709941, 0.249838, 1)
 noise_type = 5
 frequency = 0.455
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rkdi0"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_81qi7"]
 width = 2046
 height = 2046
 in_3d_space = true
@@ -34,14 +36,14 @@ mie_color = Color(0.784314, 0.815686, 0.854902, 1)
 turbidity = 5.0
 sun_disk_scale = 0.0
 ground_color = Color(0.0784314, 0.0784314, 0.0313726, 1)
-night_sky = SubResource("NoiseTexture2D_rkdi0")
+night_sky = SubResource("NoiseTexture2D_81qi7")
 
-[sub_resource type="Sky" id="1"]
+[sub_resource type="Sky" id="Sky_x0fpr"]
 sky_material = SubResource("PhysicalSkyMaterial_17moh")
 
 [sub_resource type="Environment" id="Environment_f2rii"]
 background_mode = 2
-sky = SubResource("1")
+sky = SubResource("Sky_x0fpr")
 
 [node name="FirstPersonControllerRigidbody" type="RigidBody3D" groups=["Character"]]
 collision_mask = 15
@@ -57,11 +59,11 @@ linear_damp = 1.0
 script = ExtResource("1_c5av4")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("ConvexPolygonShape3D_k2gcp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.901242, 0)
+shape = SubResource("CapsuleShape3D_eiiyn")
 
 [node name="Neck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64823, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69502, -0.151937)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 environment = SubResource("Environment_f2rii")
@@ -73,14 +75,24 @@ collision_mask = 12
 [node name="HoldPosition" type="Node3D" parent="Neck/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
+[node name="Adventurer" parent="Neck" instance=ExtResource("4_ewbuv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.36152e-09, -1.69502, 0.190388)
+
+[node name="PlayerCharacter" parent="Neck" instance=ExtResource("2_whv0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.695025, 0.151937)
+visible = false
+skeleton = NodePath("../..")
+
 [node name="Feet" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142118, 0)
 target_position = Vector3(0, -0.2, 0)
 collision_mask = 4095
 collide_with_areas = true
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_whv0k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
 [node name="FirstPersonUI" parent="." instance=ExtResource("3_56gib")]
 visible = false
+
+[node name="RemoteTransform3d" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("..")
+update_rotation = false
+update_scale = false

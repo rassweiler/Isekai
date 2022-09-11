@@ -1,23 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpcndfbbt5f4l"]
+[gd_scene load_steps=9 format=3 uid="uid://bpcndfbbt5f4l"]
 
 [ext_resource type="PackedScene" uid="uid://bnrrh7qebrkas" path="res://ui/menus/base/base_menu.tscn" id="1_5t37a"]
 [ext_resource type="Texture2D" uid="uid://dcavvw2y0tb8i" path="res://assets/images/base_panel.png" id="2_7eocv"]
+[ext_resource type="Script" path="res://ui/menus/map_menu/map_menu.gd" id="2_aqcr3"]
+[ext_resource type="Texture2D" uid="uid://o6qt0bbtal14" path="res://assets/3RDPARTY/map.jpg" id="3_kh15a"]
+[ext_resource type="Texture2D" uid="uid://bpcrwptoqdm8g" path="res://assets/images/close.png" id="5_jfbsf"]
+[ext_resource type="Texture2D" uid="uid://2pcnu8k5unmc" path="res://assets/images/close_hover.png" id="6_ixvr3"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_u0l08"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_ft4ou"]
+events = [SubResource("InputEventAction_u0l08")]
 
 [node name="MapMenu" instance=ExtResource("1_5t37a")]
-
-[node name="CenterContainer" parent="." index="1"]
-layout_mode = 1
+script = ExtResource("2_aqcr3")
+map_scale = 0.5
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer" index="0"]
-custom_minimum_size = Vector2(600, 400)
-layout_mode = 2
-offset_left = 276.0
-offset_top = 124.0
-offset_right = 876.0
-offset_bottom = 524.0
+custom_minimum_size = Vector2(1000, 600)
+offset_left = 76.0
+offset_top = 24.0
+offset_right = 1076.0
+offset_bottom = 624.0
 texture = ExtResource("2_7eocv")
 region_rect = Rect2(0, 0, 120, 120)
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/NinePatchRect" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/NinePatchRect/MarginContainer" index="0"]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 994.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer" index="0"]
+handle_input_locally = false
+size = Vector2i(988, 588)
+render_target_update_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer/SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kh15a")
+ignore_texture_size = true
+
+[node name="Icons" type="Node2D" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer/SubViewport" index="1"]
+
+[node name="CloseButton" type="TextureButton" parent="CenterContainer/NinePatchRect" index="1"]
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 9.0
+offset_right = -8.0
+offset_bottom = 41.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_ft4ou")
+texture_normal = ExtResource("5_jfbsf")
+texture_hover = ExtResource("6_ixvr3")
+ignore_texture_size = true
+stretch_mode = 0

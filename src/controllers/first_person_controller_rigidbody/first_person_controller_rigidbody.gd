@@ -7,7 +7,8 @@ extends RigidBody3D
 @export var view_sensitivity = 10.0
 @export var max_pick_weight = 50.0
 @export var pick_strength = 0.1
-@export_range(0.001,1.0) var stop_speed = 0.01
+@export_range(0.001,1.0) var stop_speed = 0.
+@export var map_icon_data : Resource = null
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

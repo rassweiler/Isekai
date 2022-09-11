@@ -1,13 +1,16 @@
 extends Node
 
 @onready var menu_list := $UI
+@onready var player := $Characters/PlayerEntity3D
 
 var pause_scene := preload("res://ui/menus/pause_menu/pause_menu.tscn")
 var inventory_scene := preload("res://ui/menus/inventory_menu/inventory_menu.tscn")
+var map_scene := preload("res://ui/menus/map_menu/map_menu.tscn")
 var menu_scene := preload("res://ui/menus/main_menu/main_menu.tscn")
-var main_menu:Node = null
-var pause_menu:Node = null
-var inventory_menu:Node = null
+var main_menu : BaseMenu = null
+var pause_menu : BaseMenu = null
+var inventory_menu : BaseMenu = null
+var map_menu : BaseMenu = null
 var is_menu_open := true
 var is_mouse_visible := true
 
@@ -25,6 +28,9 @@ func _input(event: InputEvent) -> void:
 	
 	if  event.is_action_pressed("open_inventory") and ! is_menu_open:
 		open_inventory_menu()
+		
+	if  event.is_action_pressed("open_map") and ! is_menu_open:
+		open_map_menu()
 	
 	if  event.is_action_pressed("toggle_mouse_visible") and ! is_menu_open:
 		toggle_mouse_visible()
@@ -88,6 +94,19 @@ func close_inventory_menu():
 	close_menu()
 	inventory_menu.queue_free()
 	inventory_menu = null
+	
+func open_map_menu():
+	open_menu()
+	map_menu = map_scene.instantiate()
+	map_menu.init(player)
+	menu_list.add_child(map_menu)
+	map_menu.connect("close_menu_signal",close_map_menu)
+
+func close_map_menu():
+	close_menu()
+	map_menu.queue_free()
+	map_menu = null
 
 func _on_main_menu_new_game_signal():
+#	map_menu.Init(player.get_map_icon_data())
 	close_main_menu()

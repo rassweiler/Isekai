@@ -1,8 +1,9 @@
 extends RigidBody3D
 class_name BaseDynamicEntity3D
 
-@export var mesh : Mesh = preload("res://assets/meshes/base_dynamic_entity_3d_mesh.tres")
-@export var collision_shape : Shape3D = preload("res://assets/collision_shapes/base_dynamic_entity_3d_collision_shape.tres")
+@export_node_path(Node3D) var model
+@export_node_path(CollisionShape3D) var main_collider
+#@export_node_path(RayCast3D,CollisionShape3D) var foot_collider
 @export var entity_name : String = "BaseEntity"
 @export var acceleration = 1.0
 @export_range(0.001,1.0) var stop_speed = 0.015
@@ -23,40 +24,38 @@ class_name BaseDynamicEntity3D
 @export var thirst = 100.0
 @export var max_thirst = 100.0
 
-#Copy to higher inheritance
-@export_category("Mounting")
-@export_node_path(Node3D) var head_mount_location
-@export_node_path(Node3D) var chest_mount_location
-@export_node_path(Node3D) var hand_r_mount_location
-@export_node_path(Node3D) var hand_l_mount_location
-@export_node_path(Node3D) var back_mount_location
-@export_node_path(Node3D) var waist_mount_location
-@export_node_path(Node3D) var legs_mount_location
-@export_node_path(Node3D) var foot_r_mount_location
-@export_node_path(Node3D) var foot_l_mount_location
+@onready var foot_collider : Area3D = $FootArea
 
-@onready var mesh_instance := $MeshInstance3d
-@onready var shape_instance := $CollisionShape3d
-@onready var foot_ray := $FootRay
-
-var head_mount_item : BaseEquipmentObject3D = null
-var chest_mount_item : BaseEquipmentObject3D = null
-var hand_r_mount_item : BaseEquipmentObject3D = null
-var hand_l_mount_item : BaseEquipmentObject3D = null
-var back_mount_item : BaseEquipmentObject3D = null
-var waist_mount_litem : BaseEquipmentObject3D = null
-var legs_mount_item : BaseEquipmentObject3D = null
-var foot_r_mount_item : BaseEquipmentObject3D = null
-var foot_l_mount_item : BaseEquipmentObject3D = null
+var is_on_floor = false
+var velocity = Vector3()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func Init():
+	
+func _physics_process(delta):
 	pass
+	
+func _integrate_forces(state):
+	if state.linear_velocity.length() > max_speed:
+		state.linear_velocity = state.linear_velocity.normalized() * max_speed
+
+func init_entity():
+	pass
+	
+func sub_process(delta):
+	pass
+
+func sub_physics(delta):
+	pass
+	
+func sub_integrate(state):
+	pass
+
+func jump():
+	is_on_floor = false
+	apply_central_impulse(Vector3.UP * jump_velocity * mass)

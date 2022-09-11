@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://74f4awml64pv"]
+[gd_scene load_steps=3 format=3 uid="uid://74f4awml64pv"]
 
 [ext_resource type="Script" path="res://entities/base_dynamic_entity/base_dynamic_entity_3d.gd" id="1_qnmnm"]
-[ext_resource type="Shape3D" uid="uid://ccbnrrnh23jg5" path="res://assets/collision_shapes/base_dynamic_entity_3d_collision_shape.tres" id="2_v511i"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5kyjy"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m7b7v"]
+rough = true
 
 [node name="BaseDynamicEntity3D" type="RigidBody3D"]
 collision_mask = 15
@@ -11,18 +11,11 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_m7b7v")
 script = ExtResource("1_qnmnm")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_5kyjy")
+[node name="FootArea" type="Area3D" parent="."]
+collision_mask = 15
+input_ray_pickable = false
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-shape = ExtResource("2_v511i")
-
-[node name="Node3d" type="Node3D" parent="."]
-
-[node name="FootRay" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142118, 0)
-target_position = Vector3(0, -0.2, 0)
-collision_mask = 4095
-collide_with_areas = true
+[node name="CollisionShape3d" type="CollisionShape3D" parent="FootArea"]

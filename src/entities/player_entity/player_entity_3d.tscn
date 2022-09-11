@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://mss7c3f8d48h"]
+
+[ext_resource type="PackedScene" uid="uid://dv5va0m12giry" path="res://entities/intelligent_entity/base_intelligent_entity_3d.tscn" id="1_n0wow"]
+[ext_resource type="Script" path="res://entities/player_entity/player_entity_3d.gd" id="2_tyg4s"]
+[ext_resource type="PackedScene" uid="uid://lborcugm1f8k" path="res://assets/3RDPARTY/rogue.tscn" id="3_7tjhh"]
+[ext_resource type="Script" path="res://ui/menus/map_menu/map_icon/map_icon_data.gd" id="3_dunny"]
+[ext_resource type="PackedScene" uid="uid://b1847fpsivnos" path="res://characters/biped/player/player_character.tscn" id="4_4fj7h"]
+[ext_resource type="Texture2D" uid="uid://0kpj4rsedwuw" path="res://assets/images/player_map_icon.png" id="4_shmnn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qopi1"]
+friction = 0.9
+rough = true
+
+[sub_resource type="Resource" id="Resource_bqb73"]
+script = ExtResource("3_dunny")
+texture = ExtResource("4_shmnn")
+colour = Color(0.913725, 0, 0.0313726, 1)
+scale = Vector2(0.2, 0.2)
+icon_name = "Player"
+
+[sub_resource type="Gradient" id="Gradient_exohl"]
+offsets = PackedFloat32Array(0.0740741, 0.133333)
+colors = PackedColorArray(1, 1, 1, 1, 0.0621621, 0.0709941, 0.249838, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hctfj"]
+noise_type = 5
+frequency = 0.455
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rkdi0"]
+width = 2046
+height = 2046
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.345
+color_ramp = SubResource("Gradient_exohl")
+noise = SubResource("FastNoiseLite_hctfj")
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_6ta7d"]
+rayleigh_color = Color(0.215686, 0.372549, 0.780392, 1)
+mie_color = Color(0.784314, 0.815686, 0.854902, 1)
+turbidity = 5.0
+sun_disk_scale = 0.0
+ground_color = Color(0.0784314, 0.0784314, 0.0313726, 1)
+night_sky = SubResource("NoiseTexture2D_rkdi0")
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("PhysicalSkyMaterial_6ta7d")
+
+[sub_resource type="Environment" id="Environment_d1ig1"]
+background_mode = 2
+sky = SubResource("1")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_thwgd"]
+height = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abbrk"]
+radius = 0.542269
+height = 2.83652
+
+[node name="PlayerEntity3D" instance=ExtResource("1_n0wow")]
+mass = 70.0
+physics_material_override = SubResource("PhysicsMaterial_qopi1")
+script = ExtResource("2_tyg4s")
+known_locations = null
+map_icon_data = SubResource("Resource_bqb73")
+model = NodePath("Neck/Rogue")
+main_collider = NodePath("CollisionShape3d")
+max_pick_weight = 100.0
+speed = 950.0
+max_speed = 101.0
+
+[node name="Neck" type="Node3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.294, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" index="0"]
+cull_mask = 1048573
+environment = SubResource("Environment_d1ig1")
+
+[node name="PickRay" type="RayCast3D" parent="Neck/Camera3D" index="0"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 12
+
+[node name="HoldPosition" type="Node3D" parent="Neck/Camera3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="PlayerCharacter" parent="Neck" index="1" instance=ExtResource("4_4fj7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.695025, 0.151937)
+visible = false
+skeleton = NodePath("../..")
+
+[node name="Rogue" parent="Neck" index="2" instance=ExtResource("3_7tjhh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.294, 0)
+
+[node name="FootArea" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0507505, 0)
+collision_mask = 14
+
+[node name="CollisionShape3d" parent="FootArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.161394, 0)
+shape = SubResource("CylinderShape3D_thwgd")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41468, 0)
+shape = SubResource("CapsuleShape3D_abbrk")

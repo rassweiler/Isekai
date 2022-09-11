@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv5va0m12giry"]
+
+[ext_resource type="PackedScene" uid="uid://b186swo1an3b8" path="res://entities/animal_entity/base_animal_entity_3d.tscn" id="1_sk0w1"]
+[ext_resource type="Script" path="res://entities/intelligent_entity/base_intelligent_entity_3d.gd" id="2_pjqir"]
+
+[node name="BaseIntelligentEntity3D" instance=ExtResource("1_sk0w1")]
+script = ExtResource("2_pjqir")
+map_icon_data = null

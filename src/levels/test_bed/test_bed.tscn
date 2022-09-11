@@ -10,7 +10,7 @@
 material_override = ExtResource("1_dj0eq")
 use_collision = true
 collision_layer = 2
-collision_mask = 13
+collision_mask = 29
 
 [node name="CsgBox3d" type="CSGBox3D" parent="Buildings/CsgCombiner3d"]
 size = Vector3(88, 16, 72)
@@ -24,7 +24,7 @@ size = Vector3(86, 20, 70)
 material_override = ExtResource("1_dj0eq")
 use_collision = true
 collision_layer = 2
-collision_mask = 13
+collision_mask = 29
 
 [node name="CsgBox3d" type="CSGBox3D" parent="Buildings/CsgCombiner3d2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)

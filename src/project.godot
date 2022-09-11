@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "BaseDynamicEntity3D",
+"class": &"BaseAnimalEntity3D",
+"language": &"GDScript",
+"path": "res://entities/animal_entity/base_animal_entity_3d.gd"
+}, {
 "base": "RigidBody3D",
 "class": &"BaseDynamicEntity3D",
 "language": &"GDScript",
@@ -29,6 +34,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://objects/dynamic/furniture/base/base_furniture_object_3d.gd"
 }, {
+"base": "BaseAnimalEntity3D",
+"class": &"BaseIntelligentEntity3D",
+"language": &"GDScript",
+"path": "res://entities/intelligent_entity/base_intelligent_entity_3d.gd"
+}, {
 "base": "ColorRect",
 "class": &"BaseMenu",
 "language": &"GDScript",
@@ -44,20 +54,40 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://characters/base/entity.gd"
 }, {
+"base": "Sprite2D",
+"class": &"MapIcon",
+"language": &"GDScript",
+"path": "res://ui/menus/map_menu/map_icon/map_icon.gd"
+}, {
+"base": "Resource",
+"class": &"MapIconData",
+"language": &"GDScript",
+"path": "res://ui/menus/map_menu/map_icon/map_icon_data.gd"
+}, {
 "base": "Panel",
 "class": &"ObjectPanel",
 "language": &"GDScript",
 "path": "res://ui/object_panel/object_panel.gd"
+}, {
+"base": "BaseIntelligentEntity3D",
+"class": &"PlayerEntity3D",
+"language": &"GDScript",
+"path": "res://entities/player_entity/player_entity_3d.gd"
 }]
 _global_script_class_icons={
+"BaseAnimalEntity3D": "",
 "BaseDynamicEntity3D": "",
 "BaseDynamicObject3D": "",
 "BaseEquipmentObject3D": "",
 "BaseFurnitureObject3D": "",
+"BaseIntelligentEntity3D": "",
 "BaseMenu": "",
 "BaseStaticObject3D": "",
 "Entity": "",
-"ObjectPanel": ""
+"MapIcon": "",
+"MapIconData": "",
+"ObjectPanel": "",
+"PlayerEntity3D": ""
 }
 
 [application]
@@ -131,13 +161,19 @@ toggle_mouse_visible={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777240,"unicode":0,"echo":false,"script":null)
 ]
 }
+open_map={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
-3d_physics/layer_1="Characters"
-3d_physics/layer_2="Static World"
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Static Objects"
 3d_physics/layer_3="Dynamic Object"
-3d_physics/layer_4="Static Object"
+3d_physics/layer_4="Entities"
+3d_physics/layer_5="Ragdolls"
 
 [physics]
 
