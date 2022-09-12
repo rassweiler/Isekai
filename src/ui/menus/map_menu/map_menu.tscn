@@ -1,11 +1,204 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpcndfbbt5f4l"]
+[gd_scene load_steps=16 format=3 uid="uid://bpcndfbbt5f4l"]
 
-[ext_resource type="PackedScene" uid="uid://bnrrh7qebrkas" path="res://ui/menus/base/base_menu.tscn" id="1_5t37a"]
-[ext_resource type="Texture2D" uid="uid://dcavvw2y0tb8i" path="res://assets/images/base_panel.png" id="2_7eocv"]
+[ext_resource type="Shader" path="res://assets/shaders/blur_bg_shader.gdshader" id="1_23pyp"]
 [ext_resource type="Script" path="res://ui/menus/map_menu/map_menu.gd" id="2_aqcr3"]
+[ext_resource type="Texture2D" uid="uid://cewmrdlqqer6c" path="res://assets/images/map_panel.png" id="3_b626h"]
 [ext_resource type="Texture2D" uid="uid://o6qt0bbtal14" path="res://assets/3RDPARTY/map.jpg" id="3_kh15a"]
 [ext_resource type="Texture2D" uid="uid://bpcrwptoqdm8g" path="res://assets/images/close.png" id="5_jfbsf"]
 [ext_resource type="Texture2D" uid="uid://2pcnu8k5unmc" path="res://assets/images/close_hover.png" id="6_ixvr3"]
+[ext_resource type="Texture2D" uid="uid://cbyvtw5jxutco" path="res://assets/images/reset_base.png" id="7_cnxkx"]
+[ext_resource type="Texture2D" uid="uid://cmirt0v18xwnt" path="res://assets/images/reset_hover.png" id="8_qu0eo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdx4w"]
+shader = ExtResource("1_23pyp")
+blur = 2.5
+brightness = 0.8
+
+[sub_resource type="Animation" id="Animation_cue6p"]
+resource_name = "Close"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:blur")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a6214"]
+resource_name = "Open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:blur")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pva4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:blur")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wtfn"]
+_data = {
+"Close": SubResource("Animation_cue6p"),
+"Open": SubResource("Animation_a6214"),
+"RESET": SubResource("Animation_pva4q")
+}
 
 [sub_resource type="InputEventAction" id="InputEventAction_u0l08"]
 action = &"ui_cancel"
@@ -13,24 +206,60 @@ action = &"ui_cancel"
 [sub_resource type="Shortcut" id="Shortcut_ft4ou"]
 events = [SubResource("InputEventAction_u0l08")]
 
-[node name="MapMenu" instance=ExtResource("1_5t37a")]
+[node name="MapMenu" type="ColorRect"]
+process_mode = 3
+visible = false
+material = SubResource("ShaderMaterial_pdx4w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_aqcr3")
-map_scale = 0.5
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer" index="0"]
-custom_minimum_size = Vector2(1000, 600)
-offset_left = 76.0
-offset_top = 24.0
-offset_right = 1076.0
-offset_bottom = 624.0
-texture = ExtResource("2_7eocv")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Open"
+libraries = {
+"": SubResource("AnimationLibrary_6wtfn")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1120.0
+offset_bottom = 616.0
+texture = ExtResource("3_b626h")
 region_rect = Rect2(0, 0, 120, 120)
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/NinePatchRect" index="0"]
+[node name="InnerMargin" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,34 +270,28 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CenterContainer/NinePatchRect/MarginContainer" index="0"]
+[node name="Control" type="Control" parent="MarginContainer/NinePatchRect/InnerMargin"]
+clip_contents = true
+layout_mode = 2
+anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 994.0
-offset_bottom = 594.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
+offset_right = 1082.0
+offset_bottom = 578.0
 
-[node name="SubViewport" type="SubViewport" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer" index="0"]
-handle_input_locally = false
-size = Vector2i(988, 588)
-render_target_update_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer/SubViewport" index="0"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Map" type="Sprite2D" parent="MarginContainer/NinePatchRect/InnerMargin/Control"]
 texture = ExtResource("3_kh15a")
-ignore_texture_size = true
+region_enabled = true
+region_rect = Rect2(0, 0, 3300, 1920)
+region_filter_clip_enabled = true
 
-[node name="Icons" type="Node2D" parent="CenterContainer/NinePatchRect/MarginContainer/SubViewportContainer/SubViewport" index="1"]
+[node name="Icons" type="Node2D" parent="MarginContainer/NinePatchRect/InnerMargin/Control/Map"]
+position = Vector2(-32, -24)
 
-[node name="CloseButton" type="TextureButton" parent="CenterContainer/NinePatchRect" index="1"]
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/NinePatchRect"]
 clip_contents = true
 custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -84,3 +307,29 @@ texture_normal = ExtResource("5_jfbsf")
 texture_hover = ExtResource("6_ixvr3")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ResetButton" type="TextureButton" parent="MarginContainer/NinePatchRect"]
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_ft4ou")
+texture_normal = ExtResource("7_cnxkx")
+texture_hover = ExtResource("8_qu0eo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="gui_input" from="MarginContainer/NinePatchRect/InnerMargin/Control" to="." method="_on_control_gui_input"]
+[connection signal="pressed" from="MarginContainer/NinePatchRect/ResetButton" to="." method="_on_reset_button_pressed"]

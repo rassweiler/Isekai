@@ -2,6 +2,7 @@ extends Node
 
 @onready var menu_list := $UI
 @onready var player := $Characters/PlayerEntity3D
+@onready var e_rantel = $Level/ERantel
 
 var pause_scene := preload("res://ui/menus/pause_menu/pause_menu.tscn")
 var inventory_scene := preload("res://ui/menus/inventory_menu/inventory_menu.tscn")
@@ -16,6 +17,7 @@ var is_mouse_visible := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.add_known_location(e_rantel.get_map_data(), e_rantel.get_global_location())
 	open_main_menu()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,6 +108,9 @@ func close_map_menu():
 	close_menu()
 	map_menu.queue_free()
 	map_menu = null
+	
+func _on_location_discovered(data: MapIconData, new_location: Vector3):
+	player.add_known_location(data, new_location)
 
 func _on_main_menu_new_game_signal():
 #	map_menu.Init(player.get_map_icon_data())

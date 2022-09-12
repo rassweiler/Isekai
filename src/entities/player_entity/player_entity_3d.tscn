@@ -61,7 +61,6 @@ height = 2.83652
 mass = 70.0
 physics_material_override = SubResource("PhysicsMaterial_qopi1")
 script = ExtResource("2_tyg4s")
-known_locations = null
 map_icon_data = SubResource("Resource_bqb73")
 model = NodePath("Neck/Rogue")
 main_collider = NodePath("CollisionShape3d")

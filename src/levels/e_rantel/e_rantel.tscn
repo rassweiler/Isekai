@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgdhokkufwqn5"]
+
+[ext_resource type="PackedScene" uid="uid://bl3fh2vu4istw" path="res://locations/town/town_location.tscn" id="1_2sar5"]
+[ext_resource type="Script" path="res://levels/e_rantel/e_rantel.gd" id="2_u8uln"]
+
+[node name="ERantel" instance=ExtResource("1_2sar5")]
+script = ExtResource("2_u8uln")

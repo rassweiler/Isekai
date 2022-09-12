@@ -1,15 +1,13 @@
 extends BaseIntelligentEntity3D
 class_name PlayerEntity3D
 
-@export var known_locations : Array[Resource] = []
-
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
 @onready var body := $CollisionShape
 @onready var pick_ray := $Neck/Camera3D/PickRay
 @onready var hold_position := $Neck/Camera3D/HoldPosition
 
-
+var known_locations : Array[Dictionary] = []
 var mouse_input = Vector2()
 var move_input = Vector2()
 var held_object: Object = null
@@ -73,7 +71,17 @@ func _integrate_forces(state):
 	if state.get_contact_count() > 0 and move_input.length() < 0.2:
 		if is_on_floor and state.get_contact_local_normal(0).y < 0.9:
 			apply_central_force(-state.get_contact_local_normal(0) * 10)
-
+			
+func add_known_location(data: MapIconData, new_location: Vector3):
+	var double = false
+	for location in known_locations:
+		if location.data.location_name == data.location_name:
+			double = true
+			location.location = new_location
+			location.data = data
+	if double:
+		return
+	known_locations.push_back({"data":data,"location":new_location})
 
 func grab_object():
 	var collider = pick_ray.get_collider()
