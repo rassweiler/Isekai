@@ -40,6 +40,9 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 	
+func _input(event: InputEvent) -> void:
+	pass
+	
 func _integrate_forces(state):
 	if state.linear_velocity.length() > max_speed:
 		state.linear_velocity = state.linear_velocity.normalized() * max_speed

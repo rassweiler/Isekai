@@ -54,12 +54,27 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://objects/static/base/base_static_object_3d.gd"
 }, {
+"base": "BaseMenu",
+"class": &"CharacterCreatorMenu",
+"language": &"GDScript",
+"path": "res://ui/menus/character_creator/character_creator_menu.gd"
+}, {
 "base": "RigidDynamicBody3D",
 "class": &"Entity",
 "language": &"GDScript",
 "path": "res://characters/base/entity.gd"
 }, {
-"base": "Sprite2D",
+"base": "Control",
+"class": &"FirstPersonUI",
+"language": &"GDScript",
+"path": "res://ui/first_person_ui/first_person_ui.gd"
+}, {
+"base": "BaseMenu",
+"class": &"MainMenu",
+"language": &"GDScript",
+"path": "res://ui/menus/main_menu/main_menu.gd"
+}, {
+"base": "Node2D",
 "class": &"MapIcon",
 "language": &"GDScript",
 "path": "res://ui/menus/map_menu/map_icon/map_icon.gd"
@@ -74,10 +89,20 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://ui/object_panel/object_panel.gd"
 }, {
+"base": "BaseMenu",
+"class": &"PauseMenu",
+"language": &"GDScript",
+"path": "res://ui/menus/pause_menu/pause_menu.gd"
+}, {
 "base": "BaseIntelligentEntity3D",
 "class": &"PlayerEntity3D",
 "language": &"GDScript",
 "path": "res://entities/player_entity/player_entity_3d.gd"
+}, {
+"base": "Node",
+"class": &"SaveSystem",
+"language": &"GDScript",
+"path": "res://systems/save_system.gd"
 }, {
 "base": "BaseLocation",
 "class": &"TownLocation",
@@ -94,11 +119,16 @@ _global_script_class_icons={
 "BaseLocation": "",
 "BaseMenu": "",
 "BaseStaticObject3D": "",
+"CharacterCreatorMenu": "",
 "Entity": "",
+"FirstPersonUI": "",
+"MainMenu": "",
 "MapIcon": "",
 "MapIconData": "",
 "ObjectPanel": "",
+"PauseMenu": "",
 "PlayerEntity3D": "",
+"SaveSystem": "",
 "TownLocation": ""
 }
 
@@ -107,6 +137,7 @@ _global_script_class_icons={
 config/name="Isekai"
 config/description="Simple rpg game test for SWG style exploration and building as a first person game. "
 run/main_scene="res://main.tscn"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 

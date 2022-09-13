@@ -1,4 +1,5 @@
 extends Control
+class_name FirstPersonUI
 
 @onready var target_name := $TargetName
 @onready var pick_hint := $PickHint

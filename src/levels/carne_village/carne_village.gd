@@ -1,5 +1,4 @@
-extends BaseDynamicEntity3D
-class_name BaseAnimalEntity3D
+extends TownLocation
 
 
 # Called when the node enters the scene tree for the first time.

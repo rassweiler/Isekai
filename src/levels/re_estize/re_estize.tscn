@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7dymksdppcx"]
+
+[ext_resource type="PackedScene" uid="uid://bl3fh2vu4istw" path="res://locations/town/town_location.tscn" id="1_7l1pm"]
+[ext_resource type="Script" path="res://levels/re_estize/re_estize.gd" id="2_7abv4"]
+
+[node name="ReEstize" instance=ExtResource("1_7l1pm")]
+script = ExtResource("2_7abv4")
+world_position = Vector3(-400, 0, -4800)

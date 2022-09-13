@@ -16,16 +16,18 @@ var ray_object_old: Object = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	super._ready()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	super._process(delta)
 	ray_object = pick_ray.get_collider()
 	if ray_object != ray_object_old:
 		ray_object_old = ray_object
 		
 func _input(event: InputEvent) -> void:
+	super._input(event)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * 0.01)
@@ -42,6 +44,7 @@ func _input(event: InputEvent) -> void:
 			interact()
 			
 func _physics_process(delta):
+	super._physics_process(delta)
 #	if physics_material_override.friction >= 0:
 #		physics_material_override.friction = 0
 	move_input = Vector2.ZERO
@@ -64,6 +67,7 @@ func _physics_process(delta):
 	
 		
 func _integrate_forces(state):
+	super._integrate_forces(state)
 	if move_input.length() < 0.2:
 		state.linear_velocity.x = lerp(state.linear_velocity.x, 0.0, stop_speed * mass)
 		state.linear_velocity.z = lerp(state.linear_velocity.z, 0.0, stop_speed * mass)
@@ -75,7 +79,7 @@ func _integrate_forces(state):
 func add_known_location(data: MapIconData, new_location: Vector3):
 	var double = false
 	for location in known_locations:
-		if location.data.location_name == data.location_name:
+		if location.data.icon_name == data.icon_name:
 			double = true
 			location.location = new_location
 			location.data = data

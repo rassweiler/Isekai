@@ -5,3 +5,4 @@
 
 [node name="ERantel" instance=ExtResource("1_2sar5")]
 script = ExtResource("2_u8uln")
+world_position = Vector3(-400, 0, -4800)

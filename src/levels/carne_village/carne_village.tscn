@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmyssscg8l5pf"]
+
+[ext_resource type="PackedScene" uid="uid://bl3fh2vu4istw" path="res://locations/town/town_location.tscn" id="1_w4cr8"]
+[ext_resource type="Script" path="res://levels/carne_village/carne_village.gd" id="2_1wkqh"]
+[ext_resource type="Resource" uid="uid://02maxkwjd3da" path="res://levels/carne_village/carne_village_map_icon_data.tres" id="3_fyh1s"]
+
+[node name="CarneVillage" instance=ExtResource("1_w4cr8")]
+script = ExtResource("2_1wkqh")
+world_position = Vector3(25000, 0, 3000)
+map_icon_data = ExtResource("3_fyh1s")
+
+[node name="CsgCombiner3d" type="CSGCombiner3D" parent="." index="0"]
+use_collision = true
+collision_layer = 2
+collision_mask = 29
+
+[node name="CsgBox3d" type="CSGBox3D" parent="CsgCombiner3d" index="0"]
+size = Vector3(204, 0.0944359, 214)
+
+[node name="CsgBox3d2" type="CSGBox3D" parent="CsgCombiner3d" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -98)
+size = Vector3(22, 6, 0.239729)

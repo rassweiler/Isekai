@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://8jv0mit71qhf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r7lld"]
+size = Vector2(10, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15lk4"]
+albedo_color = Color(0.501961, 0.6, 0.709804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5uhu"]
+albedo_color = Color(0.501961, 0.6, 0.709804, 1)
+
+[node name="CharacterEditor" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.920975, 0.389622, 0, -0.389622, 0.920975, 0, 2.15833, 3.64182)
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.37701)
+mesh = SubResource("PlaneMesh_r7lld")
+surface_material_override/0 = SubResource("StandardMaterial3D_15lk4")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.1197, -2.44434)
+mesh = SubResource("PlaneMesh_r7lld")
+surface_material_override/0 = SubResource("StandardMaterial3D_x5uhu")
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.837633, 0.466263, -0.284552, 0.0379797, 0.46996, 0.88187, 0.544912, -0.749491, 0.375946, 0, 3.94991, 0)
+light_color = Color(0.929412, 0.956863, 0.980392, 1)
+shadow_enabled = true

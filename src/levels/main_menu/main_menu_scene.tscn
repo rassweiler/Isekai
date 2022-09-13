@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0pojq7stgn32"]
+
+[ext_resource type="Environment" uid="uid://beg6c2m8wo7tt" path="res://assets/environments/base_environment.tres" id="1_5g21s"]
+[ext_resource type="PackedScene" uid="uid://lborcugm1f8k" path="res://assets/3RDPARTY/rogue.tscn" id="2_w3vlk"]
+[ext_resource type="PackedScene" uid="uid://bbxc2rr2qhkpl" path="res://assets/3RDPARTY/Horse.gltf" id="3_3mvf3"]
+[ext_resource type="PackedScene" uid="uid://c6ynil3qdpg2h" path="res://assets/3RDPARTY/Stag.gltf" id="4_5hnlw"]
+[ext_resource type="PackedScene" uid="uid://df2w3kg5jsg83" path="res://assets/3RDPARTY/Wizard.gltf" id="5_l55cg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vqpo4"]
+size = Vector2(1000, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22hve"]
+albedo_color = Color(0.305882, 0.419608, 0.223529, 1)
+metallic_specular = 0.17
+
+[node name="main_menu_scene" type="Node3D"]
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.927223, 0.374509, 0, -0.374509, 0.927223, 0, 2.44253, 3.95847)
+environment = ExtResource("1_5g21s")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -237.777)
+mesh = SubResource("PlaneMesh_vqpo4")
+surface_material_override/0 = SubResource("StandardMaterial3D_22hve")
+
+[node name="Rogue" parent="." instance=ExtResource("2_w3vlk")]
+transform = Transform3D(0.813791, 0, -0.581158, 0, 1, 0, 0.581158, 0, 0.813791, 3.01037, 0, -3.8975)
+
+[node name="Horse" parent="." instance=ExtResource("3_3mvf3")]
+transform = Transform3D(0.988806, 0, -0.149207, 0, 1, 0, 0.149207, 0, 0.988806, -3.2883, 0, -7.933)
+
+[node name="Stag" parent="." instance=ExtResource("4_5hnlw")]
+transform = Transform3D(0.925567, 0, 0.378584, 0, 1, 0, -0.378584, 0, 0.925567, 1.23074, 0, -9.34795)
+
+[node name="Wizard" parent="." instance=ExtResource("5_l55cg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.655915, 0, -4.02876)
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.930405, -0.0639628, -0.36091, 0.147597, 0.966675, 0.209176, 0.335503, -0.247887, 0.90884, 0, 4.28689, 0)
+shadow_enabled = true
+
+[node name="Label3d" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -4)
+shaded = true
+text = "Generic Isekai"
+font_size = 250
+
+[node name="Label3d2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.977324, 0.211751, 0, -0.211751, 0.977324, 0, 0.706, 6.21501)
+shaded = true
+text = "I shat myself and 
+now I'm in a new world"
+font_size = 80

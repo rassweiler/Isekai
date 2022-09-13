@@ -1,6 +1,6 @@
 extends BaseMenu
 
-@export var map_scale : float = 0.25
+@export var map_scale : float = 0.0335
 
 @onready var close_button: TextureButton = $MarginContainer/NinePatchRect/CloseButton
 @onready var icon_container : Node2D = $MarginContainer/NinePatchRect/InnerMargin/Control/Map/Icons
@@ -15,6 +15,7 @@ var map_height : int = 0
 var center : Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super._ready()
 	close_button.pressed.connect(close_menu)
 	map_width = map.region_rect.size.x
 	map_height = map.region_rect.size.y
@@ -24,15 +25,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	super._process(delta)
 	
 func init(player_data : PlayerEntity3D):
 	player = player_data
+	for location in player.known_locations:
+		known_locations.push_back(register_location_to_map(location.data, global_to_map(location.location)))
+	var sprite = register_location_to_map(player.get_map_icon_data(),global_to_map(player.position))
+	player_sprite = sprite
 	
 func init2():
 	if player:
-		var sprite = register_location_to_map(player.get_map_icon_data())
-		sprite.position = global_to_map(player.position)
+		var sprite = register_location_to_map(player.get_map_icon_data(),global_to_map(player.position))
 		player_sprite = sprite
 		for location in player.known_locations:
 			known_locations.push_back(register_location_to_map(location.data, global_to_map(location.location)))

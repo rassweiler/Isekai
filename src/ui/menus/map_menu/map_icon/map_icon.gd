@@ -1,8 +1,8 @@
-extends Sprite2D
+extends Node2D
 class_name MapIcon
 
 @onready var label = $Label
-var label_text : String = ""
+@onready var icon = $Icon
 var _target_transform : RemoteTransform3D = null
 var icon_data: MapIconData = null
 
@@ -14,11 +14,13 @@ func _ready():
 func _process(delta):
 	pass
 	
-func init(icon_data: MapIconData, remote_transform: RemoteTransform3D = null):
-	texture = icon_data.texture
-	scale = icon_data.scale
-	modulate = icon_data.colour
-	label_text = icon_data.icon_name
+func init(new_icon_data: MapIconData, remote_transform: RemoteTransform3D = null):
+	icon_data = new_icon_data	
 	
 func init2():
-	label.text = label_text
+	icon.scale = icon_data.icon_scale
+	icon.modulate = icon_data.colour
+	icon.texture = icon_data.texture
+	label.modulate = icon_data.colour
+	label.text = icon_data.icon_name
+	label.scale = icon_data.label_scale

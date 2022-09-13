@@ -30,5 +30,4 @@ sky_material = SubResource("PhysicalSkyMaterial_17moh")
 
 [resource]
 background_mode = 2
-background_energy = 1.5
 sky = SubResource("1")

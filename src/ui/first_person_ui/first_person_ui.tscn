@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d34armexgp1kf"]
+[gd_scene load_steps=8 format=3 uid="uid://d34armexgp1kf"]
 
 [ext_resource type="Texture2D" uid="uid://ca3o0tw182vrs" path="res://assets/images/crosshair.png" id="1_nbnma"]
 [ext_resource type="Script" path="res://ui/first_person_ui/first_person_ui.gd" id="1_qefni"]
@@ -7,6 +7,62 @@
 font_size = 22
 outline_size = 5
 outline_color = Color(0.0117647, 0, 0.0941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r5j8"]
+bg_color = Color(0.882353, 0.219608, 0.176471, 0.886275)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.588235, 0.145098, 0.0352941, 0.980392)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_415bh"]
+bg_color = Color(0.784314, 0.74902, 0.247059, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.560784, 0.498039, 0.0823529, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uotwa"]
+bg_color = Color(0.227451, 0.482353, 0.25098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.176471, 0.384314, 0.247059, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yacwk"]
+bg_color = Color(0.317647, 0.627451, 0.878431, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0901961, 0.619608, 0.843137, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 10
 
 [node name="FirstPersonUI" type="Control"]
 layout_mode = 3
@@ -18,6 +74,7 @@ grow_vertical = 2
 script = ExtResource("1_qefni")
 
 [node name="Target" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,6 +91,7 @@ ignore_texture_size = true
 
 [node name="InteractHint" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -51,6 +109,7 @@ vertical_alignment = 1
 
 [node name="PickHint" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -68,6 +127,7 @@ vertical_alignment = 1
 
 [node name="TargetName" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -84,6 +144,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -96,6 +157,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
 modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
 offset_left = 16.0
 offset_top = 632.0
 offset_right = 16.0
@@ -105,6 +167,7 @@ size_flags_vertical = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
 custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -113,30 +176,55 @@ offset_right = 150.0
 grow_vertical = 0
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
 offset_right = 150.0
-offset_bottom = 14.0
+offset_bottom = 21.0
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 12
-value = 50.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_5r5j8")
+value = 100.0
 
 [node name="StaminaBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer"]
-offset_top = 18.0
+layout_mode = 2
+offset_top = 25.0
 offset_right = 150.0
-offset_bottom = 32.0
+offset_bottom = 46.0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 12
-value = 55.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_415bh")
+value = 100.0
 
-[node name="StaminaBar2" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer"]
-offset_top = 36.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+offset_top = 50.0
 offset_right = 150.0
-offset_bottom = 50.0
+offset_bottom = 71.0
+
+[node name="HungerBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_right = 73.0
+offset_bottom = 21.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 12
-value = 55.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_uotwa")
+value = 100.0
+
+[node name="ThirstBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 77.0
+offset_right = 150.0
+offset_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/fill = SubResource("StyleBoxFlat_yacwk")
+value = 100.0
 
 [node name="Control" type="Control" parent="MarginContainer"]
-layout_mode = 3
+layout_mode = 2
 anchors_preset = 0
 offset_left = 576.0
 offset_top = 324.0
@@ -147,6 +235,7 @@ size_flags_vertical = 4
 
 [node name="Interactions" type="RichTextLabel" parent="MarginContainer/Control"]
 custom_minimum_size = Vector2(150, 100)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_font_sizes/normal_font_size = 12

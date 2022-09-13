@@ -1,19 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8wcdffgqgqno"]
+[gd_scene load_steps=4 format=3 uid="uid://c8wcdffgqgqno"]
 
 [ext_resource type="PackedScene" uid="uid://bnrrh7qebrkas" path="res://ui/menus/base/base_menu.tscn" id="1_of5j2"]
 [ext_resource type="Script" path="res://ui/menus/main_menu/main_menu.gd" id="2_ge5te"]
+[ext_resource type="PackedScene" uid="uid://bol3r7nl2xh2l" path="res://ui/menus/load_game/load_game.tscn" id="3_hsn53"]
 
 [node name="MainsMenu" instance=ExtResource("1_of5j2")]
 script = ExtResource("2_ge5te")
 
-[node name="Panel" type="Panel" parent="CenterContainer" index="0"]
-custom_minimum_size = Vector2(300, 400)
-offset_left = 426.0
-offset_top = 124.0
-offset_right = 726.0
-offset_bottom = 524.0
+[node name="CenterContainer" parent="." index="1"]
+layout_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" index="0"]
+[node name="Main" type="Panel" parent="CenterContainer" index="0"]
+custom_minimum_size = Vector2(300, 450)
+layout_mode = 2
+offset_left = 426.0
+offset_top = 99.0
+offset_right = 726.0
+offset_bottom = 549.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Main" index="0"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,13 +30,15 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Main/MarginContainer" index="0"]
+layout_mode = 2
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 284.0
-offset_bottom = 384.0
+offset_bottom = 434.0
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="CenterContainer/Main/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
 offset_right = 268.0
 offset_bottom = 37.0
 theme_override_font_sizes/font_size = 24
@@ -38,30 +46,104 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="1"]
+[node name="NewButton" type="Button" parent="CenterContainer/Main/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
 offset_top = 41.0
 offset_right = 268.0
-offset_bottom = 119.0
+offset_bottom = 132.0
 size_flags_vertical = 3
 text = "New Game"
 
-[node name="LoadButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="2"]
-offset_top = 123.0
+[node name="LoadButton" type="Button" parent="CenterContainer/Main/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+offset_top = 136.0
 offset_right = 268.0
-offset_bottom = 202.0
+offset_bottom = 227.0
 size_flags_vertical = 3
 text = "Load Game"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="3"]
-offset_top = 206.0
+[node name="SettingsButton" type="Button" parent="CenterContainer/Main/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+offset_top = 231.0
 offset_right = 268.0
-offset_bottom = 285.0
+offset_bottom = 322.0
 size_flags_vertical = 3
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" index="4"]
-offset_top = 289.0
+[node name="QuitButton" type="Button" parent="CenterContainer/Main/MarginContainer/VBoxContainer" index="4"]
+layout_mode = 2
+offset_top = 326.0
 offset_right = 268.0
-offset_bottom = 368.0
+offset_bottom = 418.0
 size_flags_vertical = 3
 text = "Quit"
+
+[node name="LoadGame" parent="CenterContainer" index="1" instance=ExtResource("3_hsn53")]
+visible = false
+custom_minimum_size = Vector2(300, 450)
+layout_mode = 2
+offset_left = 426.0
+offset_top = 99.0
+offset_right = 726.0
+offset_bottom = 549.0
+
+[node name="MarginContainer" parent="CenterContainer/LoadGame" index="0"]
+layout_mode = 1
+
+[node name="VBoxContainer" parent="CenterContainer/LoadGame/MarginContainer" index="0"]
+layout_mode = 2
+offset_right = 284.0
+offset_bottom = 434.0
+
+[node name="Label" parent="CenterContainer/LoadGame/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="ScrollContainer" parent="CenterContainer/LoadGame/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="ItemList" parent="CenterContainer/LoadGame/MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+layout_mode = 2
+offset_right = 168.0
+
+[node name="ConfirmLoadButton" parent="CenterContainer/LoadGame/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="BackButton" parent="CenterContainer/LoadGame/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="MarginContainer" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_right = 177.0
+offset_bottom = 72.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+offset_right = 682.0
+offset_bottom = 102.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+offset_right = 682.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 50
+text = "Generic Isekai:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 682.0
+offset_bottom = 102.0
+text = "I sharted with extreme force, and now I find myself in a new world - with no toilet paper."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/Main/MarginContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Main/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/LoadGame/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="CenterContainer/LoadGame"]
